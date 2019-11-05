@@ -606,12 +606,15 @@ form.easy-property-search-filters select {
 
 .property-meta {
     font-size: 0;
+    border: 1px solid #636363;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .property-meta .meta {
     width: 50%;
     display: inline-block;
-    border: 1px solid #636363;
+    border-top: 1px;
     border-bottom: 0px;
     border-style: inset;
     padding: 20px;
@@ -628,17 +631,20 @@ form.easy-property-search-filters select {
     width: 100%;
 }
 
-.property-meta .meta:not(.full):nth-child(odd) {
-    border-left: 0px;
+.meta + .meta.full {
+    border-bottom: 1px solid;
 }
 
-.property-meta .meta:nth-last-child(2),
-.property-meta .meta:last-of-type {
-    border-bottom: 1px solid #636363;
+.meta.full + .meta.full {
+    border-top: 1px solid;
 }
 
-.property-meta + .property-meta .full {
-    border-top: 0;
+.meta.left {
+    border-right: 1px solid #636466;
+}
+
+.bedroom.meta {
+    background: #cccccc36;
 }
 
 

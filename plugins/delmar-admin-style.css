@@ -155,10 +155,16 @@ span.space {
 }
 
 
+.extra-bedroom-details {
+    width: 100%;
+}
+
 .main_bedroom_details {
     width: 100%;
     display: flex;
+    padding-bottom: 10px;
 }
+
 
 span.add_more_bedroom {
     background: green;
@@ -174,4 +180,8 @@ span.remove_bedroom {
     border-radius: 3px;
     display: flex;
     align-items: center;
+}
+
+#main-bedroom-wrapper .remove_bedroom {
+    display: none;
 }

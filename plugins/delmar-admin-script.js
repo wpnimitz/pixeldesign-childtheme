@@ -57,13 +57,16 @@ jQuery(document).ready(function( $ ) {
     */
     $rental_days.val($rental_days.data("blocked"));
 
-    $(".add_more_bedroom").on("click" function(){
-        var main_bedroom = $(".main_bedroom_details").html();
+    $('.add_more_bedroom').on('click', function(){
+        var main = $("#main-bedroom-wrapper").html();
+        var tempHtml = main; 
 
-        main_bedroom.insertAfter(".main_bedroom_details");
-     });
+        $(".extra-bedroom-details").append('<div class="main_bedroom_details"> ' + tempHtml + '</div>');
 
+    });
 
-
+    $("#rental-property-details-id").on('click', ".remove_bedroom", function(){
+        $(this).closest(".main_bedroom_details").remove();
+    });
 
 });

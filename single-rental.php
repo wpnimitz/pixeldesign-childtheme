@@ -39,6 +39,8 @@ if( empty($property_description) ) {
 $property_indoor_space =  get_post_meta( get_the_ID(), 'property_indoor_space', true);
 $property_bedrooms =  get_post_meta( get_the_ID(), 'property_bedrooms', true);
 $property_bedrooms =  get_post_meta( get_the_ID(), 'property_bedrooms', true);
+$bedroom_label =  get_post_meta( get_the_ID(), 'bedroom_label', true);
+$bedroom_details =  get_post_meta( get_the_ID(), 'bedroom_details', true);
 $property_bathrooms =  get_post_meta( get_the_ID(), 'property_bathrooms', true);
 $property_powder_room =  get_post_meta( get_the_ID(), 'property_powder_room', true);
 $property_garage_stalls =  get_post_meta( get_the_ID(), 'property_garage_stalls', true);
@@ -132,17 +134,14 @@ if($property_beds == "") {
 										<span class="propertyNumber"><?php echo number_format($property_indoor_space) ?></span>
 										<br>Sq Ft Indoor Living Space
 									</div>
-									<div class="meta">
-										<span class="propertyNumber"><?php echo $property_bedrooms ?></span>
-										<br>Bed Room<?php echo ($property_bedrooms > 1) ? 's' : '' ?>
-									</div>
-									<div class="meta">
-										<span class="propertyNumber"><?php echo $property_beds ?></span>
-										<br>Bed<?php echo ($property_bedrooms > 1) ? 's' : '' ?>
-									</div>
-								</div>
-								<div class="property-meta">
-									<div class="meta full">
+							
+							<?php if(!empty($bedroom_label)) {
+								for ($i=0; $i < count($bedroom_label); $i++) { 
+									echo '<div class="bedroom meta left">'.$bedroom_label[$i].'</div>';
+									echo '<div class="bedroom meta">'.$bedroom_details[$i].'</div>';
+								}
+							}?>
+									<div class="meta left">
 										<span class="propertyNumber"><?php echo $property_bathrooms ?></span>
 										<br>Bath Room<?php echo ($property_bathrooms > 1) ? 's' : '' ?>
 									</div>
@@ -150,10 +149,7 @@ if($property_beds == "") {
 										<span class="propertyNumber"><?php echo $property_powder_room ?></span>
 										<br>Powder Room<?php echo ($property_powder_room > 1) ? 's' : '' ?>
 									</div>
-									<div class="meta">
-										<span class="propertyNumber"><?php echo $property_garage_stalls ?></span>
-										<br>Garage Stall<?php echo ($property_garage_stalls > 1) ? 's' : '' ?>
-									</div>
+									
 								</div>
 							</div>
 						</div>

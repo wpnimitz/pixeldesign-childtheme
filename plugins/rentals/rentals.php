@@ -427,20 +427,44 @@ function rental_metabox_callback( $meta_id ) {
 
 	echo '<h2 class="fullwidth additional-heading">Bedroom Details <span class="add_more_bedroom">Add</span></h2>';
 
-	echo '<div class="main_bedroom_details">';
+	$bedroom_label = get_post_meta( $meta_id->ID, 'bedroom_label', true );
+	$bedroom_details = get_post_meta( $meta_id->ID, 'bedroom_details', true );
 
-	echo '<div class="child-epl-options">';
-	echo "Bedroom Label: <br>";
-	echo '<input name="bedroom_label[]" type="text">';
-	echo '</div>';
+	echo '<div class="main_bedroom_details" id="main-bedroom-wrapper">';
 
-	echo '<div class="child-epl-options">';
-	echo "Bedroom Details: <br>";
-	echo '<input name="bedroom_details[]" type="text">';
-	echo '</div>'; 
+		echo '<div class="child-epl-options">';
+		echo "Bedroom Label: <br>";
+		echo '<input name="bedroom_label[]" type="text" value="'.$bedroom_label[0].'">';
+		echo '</div>';
 
-	echo '<span class="remove_bedroom">Remove</span>';
+		echo '<div class="child-epl-options">';
+		echo "Bedroom Details: <br>";
+		echo '<input name="bedroom_details[]" type="text" value="'.$bedroom_details[0].'">';
+		echo '</div>'; 
+
+		echo '<span class="remove_bedroom">Remove</span>';
 	echo '</div>'; //main bedroom details
+
+	echo '<div class="extra-bedroom-details">';
+
+	for ($i=1; $i < count($bedroom_label); $i++) { 
+		echo '<div class="main_bedroom_details" >';
+
+			echo '<div class="child-epl-options">';
+			echo "Bedroom Label: <br>";
+			echo '<input name="bedroom_label[]" type="text" value="'.$bedroom_label[$i].'">';
+			echo '</div>';
+
+			echo '<div class="child-epl-options">';
+			echo "Bedroom Details: <br>";
+			echo '<input name="bedroom_details[]" type="text" value="'.$bedroom_details[$i].'">';
+			echo '</div>'; 
+
+			echo '<span class="remove_bedroom">Remove</span>';
+		echo '</div>'; //main bedroom details
+	}
+
+	echo'</div>';
 
 
 
@@ -548,6 +572,13 @@ function rental_meta_box_save_metabox( $post_id ) {
     	);
     	$record_id = $wpdb->insert_id;
     }
+  }
+  if ( isset($_POST['bedroom_label']) ) {        
+    update_post_meta($post_id, 'bedroom_label', $_POST['bedroom_label']);      
+  }
+
+  if ( isset($_POST['bedroom_details']) ) {        
+    update_post_meta($post_id, 'bedroom_details', $_POST['bedroom_details']);      
   }
 }
 add_action('save_post', 'rental_meta_box_save_metabox');
