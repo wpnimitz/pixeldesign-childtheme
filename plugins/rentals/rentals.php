@@ -425,6 +425,20 @@ function rental_metabox_callback( $meta_id ) {
 
 	echo '</div>'; //delmar property details
 
+	echo '<h2 class="fullwidth additional-heading">Bedroom Details</h2>';
+	echo '<div class="child-epl-options">';
+
+	echo "Bedroom Label: <br>";
+	echo '<input name="bedroom_label[]" type="text">';
+
+	echo '<br>'
+
+	echo "Bedroom Details: <br>";
+	echo '<input name="bedroom_details[]" type="text">';
+
+
+	echo '</div>'; //Bedroom Details
+
 
 }
 
