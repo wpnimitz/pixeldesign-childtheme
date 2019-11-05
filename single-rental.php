@@ -137,7 +137,7 @@ if($property_beds == "") {
 										<br>Sq Ft Indoor Living Space
 									</div>
 									
-							<h1>asdfsadf</h1>
+									<div class="meta full">
 									<?php if(!empty($bedroom_label)) {
 										echo '<table id="bedrooms" class="bedroomsDetails" style="border:3px solid red;">';
 										for ($i=0; $i < count($bedroom_label); $i++) { 
@@ -148,6 +148,7 @@ if($property_beds == "") {
 										}
 										echo '</table>';
 									}?>
+									</div>
 									
 											
 
