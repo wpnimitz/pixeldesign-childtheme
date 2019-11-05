@@ -26,7 +26,7 @@ function common_body_class_post_name( $classes ) {
     return $classes;
 }
 
-
+/*sadfasdfasdf*/
 /****
 ANY Small functions Goes here.
 ****/
