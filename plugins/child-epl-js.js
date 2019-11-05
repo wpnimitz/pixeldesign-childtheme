@@ -28,10 +28,11 @@ jQuery(document).ready(function( $ ) {
         $("#top-menu > li").addClass("hidemenu");
         console.log("hiding menus")
         $("#et-secondary-nav > li").removeClass("strong");
-        $("#top-header").hide();
+        
 
         if( $('body').hasClass("home") ) {
             sMenu = "actual";
+            $("#top-header").hide();
         } else if ( $('body').hasClass('single-property') ) {
             sMenu = "restate";
         } else if ( $('body').hasClass('single-rental') ) {
@@ -47,7 +48,6 @@ jQuery(document).ready(function( $ ) {
                 } 
                 Cookies.set('sMenu', sMenu);
             }
-            $("#top-header").show(); 
         }
 
         logo_img.attr("src", $common["assetSVG"] + sMenu + '.svg');
