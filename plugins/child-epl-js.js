@@ -31,15 +31,14 @@ jQuery(document).ready(function( $ ) {
         $("#top-header").hide();
 
         if( $('body').hasClass("home") ) {
-            sMenu = "actual";            
-        } else if ($('body').hasClass('single-property')) {
+            sMenu = "actual";
+        } else if ( $('body').hasClass('single-property') ) {
             sMenu = "restate";
-        } else if ($('body').hasClass('single-rental')) {
+        } else if ( $('body').hasClass('single-rental') ) {
             sMenu = "rental";
         } else {
-
             if($fromBody) {
-                if( $('body').hasClass("rental-properties") {
+                if( $('body').hasClass("rental-properties") ) {
                     sMenu = "rental";               
                 } else if( $('body').hasClass("properties") ) {
                     sMenu = "restate";
@@ -48,17 +47,14 @@ jQuery(document).ready(function( $ ) {
                 } 
                 Cookies.set('sMenu', sMenu);
             }
-            $("#top-header").show();
-            $("#et-secondary-nav li." + sMenu).addClass("strong");
+            $("#top-header").show(); 
         }
 
         logo_img.attr("src", $common["assetSVG"] + sMenu + '.svg');
         logo_img.removeClass().addClass(sMenu)
         logo_link.attr("href", $mainSite);
+        $("#et-secondary-nav li." + sMenu).addClass("strong");
         $("#top-menu li." + sMenu).removeClass("hidemenu");  
-
-
-
     }
 
 
