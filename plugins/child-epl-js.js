@@ -38,9 +38,9 @@ jQuery(document).ready(function( $ ) {
         } else {
 
             if($fromBody) {
-                if( $('body').hasClass("rental-properties") ) {
+                if( $('body').hasClass("rental-properties") OR $('body').hasClass('single-property') ) {
                     sMenu = "rental";               
-                } else if( $('body').hasClass("properties") ) {
+                } else if( $('body').hasClass("properties") OR $('body').hasClass('single-rental') ) {
                     sMenu = "restate";
                 } else if ( $('body').hasClass("development") ) {
                     sMenu = "difference";

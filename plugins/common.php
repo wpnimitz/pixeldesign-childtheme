@@ -96,7 +96,7 @@ add_shortcode( 'show_properties', 'get_delmar_properties' );
 function easy_property_blurb_extra($post_id, $type = "property") { 
 	$prop_title = get_the_title($post_id);
 	$prop_price = get_post_meta( $post_id, 'property_price', true);
-	$prop_price_max = get_post_meta( $post_id, 'prop_price_max', true);
+	$prop_price_max = get_post_meta( $post_id, 'property_price_max', true);
 	$property_indoor_space = get_post_meta( $post_id, 'property_indoor_space', true);
 	$prop_building_area_unit_text = 'Sq Ft Indoor Living Space';
 	$prop_bedrooms = get_post_meta( $post_id, 'property_bedrooms', true);
