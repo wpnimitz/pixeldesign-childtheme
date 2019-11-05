@@ -423,23 +423,22 @@ function rental_metabox_callback( $meta_id ) {
 	echo '<div class="form-group"><input type="text" name="unavailable_adder" value=""></div>';
 	echo '</div>';
 
-	echo '</div>'; //delmar property details
+
 
 	echo '<h2 class="fullwidth additional-heading">Bedroom Details</h2>';
 	echo '<div class="child-epl-options">';
-
 	echo "Bedroom Label: <br>";
 	echo '<input name="bedroom_label[]" type="text">';
+	echo '</div>';
 
-	echo '<br>';
-
+	echo '<div class="child-epl-options">';
 	echo "Bedroom Details: <br>";
 	echo '<input name="bedroom_details[]" type="text">';
-
-
 	echo '</div>'; //Bedroom Details
 
+	
 
+	echo '</div>'; //delmar property details
 }
 
 
