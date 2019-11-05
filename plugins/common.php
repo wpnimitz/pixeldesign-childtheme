@@ -153,16 +153,19 @@ function easy_property_blurb_extra($post_id, $type = "property") {
 					$ret .= ' / ' . $prop_bathrooms . ' Bath Room';
 				}
 
+				
 				if($prop_powderrooms > 1) {
-					$ret .= ' / ' . $prop_powderrooms . ' Powder Rooms';
+					$ret .= ' / ' . $prop_powderrooms . ' Half Baths';
 				} else {
-					$ret .= ' / ' . $prop_powderrooms . ' Powder Room';
+					$ret .= ' / ' . $prop_powderrooms . ' Half Bath';
 				}
-
-				if($prop_garagestalls > 1) {
-					$ret .= '<br>' . $prop_garagestalls . ' Garage Stalls';
-				} else {
-					$ret .= '<br>' . $prop_garagestalls . ' Garage Stall';
+				
+				if($type == "property") {
+					if($prop_garagestalls > 1) {
+						$ret .= '<br>' . $prop_garagestalls . ' Garage Stalls';
+					} else {
+						$ret .= '<br>' . $prop_garagestalls . ' Garage Stall';
+					}
 				}
 				
 				$ret .= '</p>';

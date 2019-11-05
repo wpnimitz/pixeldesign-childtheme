@@ -191,6 +191,7 @@ function rental_filtered_data( $atts ){
 	$ret .= '<div class="et_pb_column et_pb_column_1_2">';
 	$ret .= '<label>Bedrooms</label>';
 	$ret .= '<select name="bedrooms">';
+	$ret .= '<option value="0">All</option>';
 	for ($i=2; $i < 11; $i++) { 
 		$ret .= '<option value="'.$i.'">'.$i.'</option>';
 	}
@@ -204,6 +205,7 @@ function rental_filtered_data( $atts ){
 	$ret .= '<div class="et_pb_column et_pb_column_4_4">';
 	$ret .= '<label>Number of Beds</label>';
 	$ret .= '<select name="num_bedrooms">';
+	$ret .= '<option value="0">All</option>';
 	for ($i=2; $i < 13; $i++) { 
 		$ret .= '<option value="'.$i.'">'.$i.'</option>';
 	}
@@ -310,6 +312,7 @@ function rental_metabox_callback( $meta_id ) {
 	$property_outdoor_space = get_post_meta( $meta_id->ID, 'property_outdoor_space', true );
 	echo '<input type="number" step="1" name="property_outdoor_space" placeholder="Enter outdoor living in sq. ft." value="'.  $property_outdoor_space .'">';
 
+	
 	echo '<h3>Number of Bedrooms</h3>';
 	$property_bedrooms = get_post_meta( $meta_id->ID, 'property_bedrooms', true );
 	echo '<input type="number" step="1" name="property_bedrooms" placeholder="How many bedrooms?" value="'.  $property_bedrooms .'">';
@@ -317,19 +320,24 @@ function rental_metabox_callback( $meta_id ) {
 	echo '<h3>Number of Beds</h3>';
 	$property_beds = get_post_meta( $meta_id->ID, 'property_beds', true );
 	echo '<input type="number" step="1" name="property_beds" placeholder="How many beds?" value="'.  $property_beds .'">';
+	
 
 	echo '<h3>Number of Bathrooms</h3>';
 	$property_bathrooms = get_post_meta( $meta_id->ID, 'property_bathrooms', true );
 	echo '<input type="number" step="1" name="property_bathrooms" placeholder="How many bathrooms?" value="'.  $property_bathrooms .'">';
 
-    echo '<h3>Number of Powder Rooms</h3>';
+    echo '<h3>Number of Half Baths</h3>';
 	$property_powder_room = get_post_meta( $meta_id->ID, 'property_powder_room', true );
-	echo '<input type="number" step="1" name="property_powder_room" placeholder="How many powder rooms?" value="'.  $property_powder_room .'">';
+	echo '<input type="number" step="1" name="property_powder_room" placeholder="How many half baths?" value="'.  $property_powder_room .'">';
 
+	/** 
 	echo '<h3>Number of Garage Stalls</h3>';
 	$property_garage_stalls = get_post_meta( $meta_id->ID, 'property_garage_stalls', true );
 	echo '<input type="number" step="1" name="property_garage_stalls" placeholder="How many garage stalls?" value="'.  $property_garage_stalls .'">';
+	**/
+
 	echo '</div>';
+	
 
 
 	echo '<h2 class="fullwidth additional-heading">Rental Pricing</h2>';

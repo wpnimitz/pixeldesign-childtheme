@@ -126,32 +126,36 @@ if($property_beds == "") {
                             </div> 
 
 							<!-- END: BOILERPLATE FEATURE LIST -->
-
+							
 							</div>
+							
+							<!-- Property Grid layout -->
 							<div class="et_pb_column et_pb_column_1_3">
 								<div class="property-meta">
 									<div class="meta full">
 										<span class="propertyNumber"><?php echo number_format($property_indoor_space) ?></span>
 										<br>Sq Ft Indoor Living Space
 									</div>
-							
-							<?php if(!empty($bedroom_label)) {
-								for ($i=0; $i < count($bedroom_label); $i++) { 
-									echo '<div class="bedroom meta left">'.$bedroom_label[$i].'</div>';
-									echo '<div class="bedroom meta">'.$bedroom_details[$i].'</div>';
-								}
-							}?>
+									
+									<?php if(!empty($bedroom_label)) {
+										for ($i=0; $i < count($bedroom_label); $i++) { 
+											echo '<div class="bedroom meta left">'.$bedroom_label[$i].'</div>';
+											echo '<div class="bedroom meta">'.$bedroom_details[$i].'</div>';
+										}
+									}?>
+
 									<div class="meta left meta-last">
 										<span class="propertyNumber"><?php echo $property_bathrooms ?></span>
 										<br>Bath Room<?php echo ($property_bathrooms > 1) ? 's' : '' ?>
 									</div>
 									<div class="meta  meta-last">
 										<span class="propertyNumber"><?php echo $property_powder_room ?></span>
-										<br>Powder Room<?php echo ($property_powder_room > 1) ? 's' : '' ?>
+										<br>Half Bath<?php echo ($property_powder_room > 1) ? 's' : '' ?>
 									</div>
 									
 								</div>
 							</div>
+							<!-- END: Property Grid layout -->
 						</div>
 						
 						<?php if(!empty($property_text_features)) {?>
