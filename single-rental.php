@@ -137,12 +137,19 @@ if($property_beds == "") {
 										<br>Sq Ft Indoor Living Space
 									</div>
 									
+							
 									<?php if(!empty($bedroom_label)) {
+										echo '<table id="bedrooms" class="bedroomsDetails" style="border:3px solid red;">';
 										for ($i=0; $i < count($bedroom_label); $i++) { 
-											echo '<div class="bedroom meta left">'.$bedroom_label[$i].'</div>';
-											echo '<div class="bedroom meta">'.$bedroom_details[$i].'</div>';
+											echo '<tr>';
+											echo '<td class="bedroomName">'.$bedroom_label[$i].'</td>';
+											echo '<td class="beds">'.$bedroom_details[$i].'</td>';
+											echo '</tr>';
 										}
+										echo '</table>';
 									}?>
+									
+											
 
 									<div class="meta left meta-last">
 										<span class="propertyNumber"><?php echo $property_bathrooms ?></span>
