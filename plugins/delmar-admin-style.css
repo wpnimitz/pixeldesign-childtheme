@@ -1,0 +1,155 @@
+.delmar-property-details .hndle {
+    background: #32373c;
+    color: #fff !important;
+}
+
+.delmar-property-details {
+    display: flex;
+    padding-bottom: 100px;
+    flex-wrap: wrap;
+}
+
+.delmar-property-details h2.fullwidth {
+    width: 100%;
+    flex-grow: 1;
+    font-size: 16px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+h2.fullwidth.additional-heading {
+    margin-top: 60px !important;
+    background: #32373c;
+    color: #fff;
+    font-weight: 500;
+    box-sizing: border-box;
+}
+
+.delmar-property-details h3 {
+	font-family: 14px;
+	font-weight: 500;
+}
+
+.delmar-property-details .child-epl-options {
+    padding: 10px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+.delmar-property-details:after {
+    position: absolute;
+    content: "Don't forget to add a feature image.";
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #8d8f91;
+    color: #fff;
+    text-align: center;
+    padding: 20px 30px;
+}
+
+.child-epl-options.checkbox-options {
+    flex-direction: row;
+}
+
+
+.delmar-property-details input,
+.delmar-property-details select {
+    width: 100%;
+}
+
+.delmar-property-details input[type="checkbox"] {
+    width: initial;
+}
+
+
+
+.checkbox-group {
+    display: inline-block;
+    min-width: 200px;
+    max-width: 250px;
+}
+
+.delmar-property-details input + p {
+    margin: 0;
+    background: #8d8f91;
+    margin-top: -1px;
+    padding: 2px 5px;
+    opacity: 0;
+}
+/** TINYMC **/
+.delmar-property-details .wp-editor-wrap input {
+    width: initial !important;
+}
+
+.delmar-property-details input:hover + p {
+	opacity: 1;
+}
+
+.delmar-property-details .unavailable-adder {
+    width: 100%;
+}
+
+
+.delmar-property-details .unavailable-adder .form-group {
+    display: flex;
+    max-width: 300px;
+}
+
+.delmar-property-details .display-unavailable span,
+.rental-summary span,
+.rental-days span {
+    background: #8d8f91;
+    padding: 5px 25px 5px 10px;
+    border-radius: 2px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+.rental-summary,
+.rental-days {
+    display: none;
+}
+
+tr:hover .rental-summary,
+tr:hover .rental-days {
+    display: initial;
+}
+
+.rental-summary span,
+.rental-days span {
+    padding: 3px 5px;
+    font-size: 10px;
+}
+
+.rental-summary .price {
+    background: green;
+}
+
+.rental-summary span {
+    background: #b0b0b0;
+}
+
+span.space {
+    display: block;
+    padding: 1px;
+    max-width: 100px;
+}
+
+.delmar-property-details .display-unavailable span:after {
+    content: "x";
+    background: #32373c;
+    padding: 6px 5px !important;
+    line-height: 1.2em;
+    margin-left: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}

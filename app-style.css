@@ -1,0 +1,696 @@
+.delmar-logo img {
+    max-height: 20px;
+    float: left;
+    width: 100px;
+    padding-bottom: 5px;
+}
+
+.hidemenu {
+    display: none !important;
+}
+
+#et-secondary-nav .strong a {
+    font-weight: 600;
+    color: #000;
+}
+
+.notopbar #top-header {
+    display: none;
+}
+
+@media screen and (max-width: 980px) {
+    li.main {
+        display: none !important;
+    }
+
+    .hidemenu.mobile-only {
+        display: block !important;
+    }
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 0;
+  grid-auto-rows: minmax(100px, auto);
+    font-family: 'Montserrat',Helvetica,Arial,Lucida,sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+.wrapper .et_pb_row {
+    width: 100% !important;
+    max-width: 1400px !important;
+}
+.column .et_pb_image_wrap {
+    background-color: #eae9e4;
+}
+
+.column img {
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+.wrapper {
+    display: grid;
+    justify-content: center;
+}
+.grid_container {
+    box-sizing: border-box;
+    border: 3px solid white;
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: repeat(6, 180px);
+    grid-auto-rows: 180px;
+    justify-content: center;
+    grid-gap: 3px;
+}
+
+
+
+@media screen and (max-width: 1080px) {
+    .grid_container {
+        grid-template-columns: repeat(4, 180px);
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .grid_container {
+        grid-template-columns: repeat(2, 180px);
+    }
+}
+
+
+.et_pb_toggle_title {
+    color: #cf3339!important;
+}
+
+
+.divider {
+    color: rgba(0,0,0, 0.2);
+    
+}
+
+
+
+
+/*------------- bio hover effects -----------------*/
+
+
+
+.hover-bio-wrapper {
+    position: relative;
+    color: rgba(0,0,0,0);
+    width: 100%;
+	margin-bottom: -8px;
+}
+ 
+figure.hover-bio img{
+    display: block;
+}
+ 
+figure.hover-bio {
+    position: relative;
+    overflow: hidden;
+    margin: 3px;
+    padding: 0;
+    display: inline-block;
+    line-height: 0;
+    text-align:center !important;
+}
+ 
+figure.hover-bio::before, figure.hover-bio::after{
+    position: absolute;
+    background: black;
+            opacity: 0.3;
+            content: '';
+    height: 100%;
+            width: 100%;
+    display: block;
+    top: 0;
+    left: 0;
+    -moz-transform: translate3d(0, -100%, 0);
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    -moz-transition: all 0.8s;
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+}
+ 
+figure.hover-bio figcaption{
+    position: absolute;
+    background: rgba(0,0,0,.5);
+            display: block;
+    line-height: 1.7em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: left;
+    padding: 45% 10%;
+    z-index: 100;
+    width: 101%;
+    height: 101%;
+    overflow: hidden;
+    top: 50%;
+    left: 0;
+    -moz-transform: translate3d(-100%, -50%, 0);
+    -webkit-transform: translate3d(-100%, -50%, 0);
+    transform: translate3d(-100%, -50%, 0);
+    opacity: 0;
+    -moz-transition: all 0.8s;
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+}
+ 
+figure.hover-bio img{
+    -moz-transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -moz-transition: all 0.8s;
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+
+}
+ 
+figure.hover-bio figcaption{
+    top: 100%; /*causes the overlay to peek in from the bottom*/
+    opacity: 1;
+    -moz-transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+ 
+figure.hover-bio:hover img {
+            opacity: 1; /*the opacity of the image */
+	-webkit-transform: scale(1.1);
+ transform: scale(1.1);
+}
+ 
+figure.hover-bio:hover figcaption{
+	background-color: rgba(0,0,0,.4); /*the color and opacity of the overlay */
+	/*background-image: url(http://staging.momentum-glass.com/wp-content/uploads/2018/04/front_box_texture-1.png);*/
+	color: #fff;
+    opacity: 1;
+    -moz-transform: translate3d(0, -100%, 0);
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    -moz-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+    /*box-shadow: 0px -2px 28px rgba(255,255,255, 1);*/
+}
+
+figcaption h4.hoverHead {
+	color: rgba(255,255,255, 1);
+	font-size: 1.7em;
+	font-weight: 400;	
+	text-align: center;
+}
+figcaption p {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    line-height: 1.4em;
+    font-weight: 300;
+    font-size: 1.2em;
+    overflow-wrap: break-word;
+}
+
+
+/** NIMITZ EDITS **/
+#top-header {
+        z-index: 9;
+}
+#main-header{
+    transition: 0.5s;
+    -moz-transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
+#main-header.et-fixed-header {
+    top: 0 !important;
+}
+
+#top-menu li a:after {
+    content: " | ";
+    padding-left: 18px;
+}
+
+#top-menu li a:last-of-type:after {
+    content: "";
+    padding-left: 0;
+}
+
+.mobile_menu_bar:before {
+    color: #d3aa69;
+}
+
+#main-content .container:before {
+    width: 0 !important;
+}
+
+
+.single-rental .container {
+    max-width: 100%;
+    width: 100%;
+}
+
+
+.property-search-filters {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.property-search-filters .et_pb_row {
+    padding: 15px 0 !important;
+    display: block !important;
+}
+
+.property-search-filters label {
+    display: block;
+    color: #bbb;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+
+.property-search-filters select,
+.property-search-filters input {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+
+.property-search-filters select {
+    background: url(//cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) right center no-repeat;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-position: right 4% center;
+    background-size: 10px;
+}
+/* for IE and Edge */ 
+select::-ms-expand { 
+	display: none; 
+}
+
+.property-search-wrapper #searchFilterButton{
+    background: #ca9f53;
+    color: #fff;
+    padding: 10px 30px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+
+.property-search-wrapper .daterangepicker td.active,
+.property-search-wrapper .daterangepicker td.active:hover {
+    background-color: #ca9f53;
+}
+
+.property-search-wrapper.daterangepicker td.disabled {
+    background-color: #efefef;
+    border-radius: 0;
+}
+
+.single #main-content .container {
+    padding-top: 0;
+}
+
+.single #main-content .container:before {
+    display: none;
+}
+
+.property-slider {
+    padding: 20px;
+    padding-bottom: 70px;
+}
+
+.single .entry-content {
+    background: url(assets/svg/Del-Mar-Logo-grey-3pct.svg);
+    background-position: right -30% top 55em;
+    background-size: 45%;
+    background-repeat: no-repeat;
+}
+
+.single .et_pb_section {
+    background: transparent !important;
+}
+
+.single .property-wrapper .et_pb_section {
+    background-image: initial !important;
+}
+
+
+/** PROPERY BLURBS **/
+.property-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.property-list .blurb-extra {
+    width: calc(50% - 20px);
+    margin: 10px;
+    padding: 10px;
+}
+
+
+.blurb-extra.et_pb_blurb {
+    font-size: 18px;
+    color: rgba(0,0,0,0)!important;
+    line-height: 1.5em;
+    background-image: url(assets/img/no-featured.jpg);
+    background-size: cover;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    transition: all ease-in-out 0.5s!important;
+    position: relative;
+}
+
+.rental.blurb-extra:hover h4.et_pb_module_header {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.rental.blurb-extra:hover .et_pb_blurb_description h4.et_pb_module_header {
+    padding-bottom: 0.5em !important;
+    padding-top: 0 !important;
+    margin-bottom: 0.5em !important;
+    margin-top: 0 !important;
+}
+
+
+.blurb-extra.et_pb_blurb:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    -webkit-transition: background .75s ease-out;
+    -moz-transition: background .75s ease-out;
+    -o-transition: background .75s ease-out;
+    transition: background .75s ease-out;
+}
+
+.blurb-extra.et_pb_blurb:hover:before {
+    background: rgba(255,255,255,0.72);
+}
+
+.blurb-extra .et_pb_blurb_content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    left: 0;
+    right: 0;
+}
+
+.blurb-extra .et_pb_blurb_container {
+    width: 100%;
+}
+
+
+.blurb-extra.et_pb_blurb h4 {
+    font-family: 'Montserrat',Helvetica,Arial,Lucida,sans-serif;
+    color: #ffffff;
+    letter-spacing: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+    line-height: 1.5em;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+
+.blurb-extra.et_pb_blurb:hover h4,  
+.blurb-extra.et_pb_blurb:hover p {
+    color: #222 !important;
+}
+
+.blurb-extra .prop-price {
+    font-family: 'Cormorant',Georgia,"Times New Roman",serif;
+}
+
+.blurb-extra .et_pb_blurb_description  {
+    display: none;
+    height: 0;
+    font-family: 'Cormorant',Georgia,"Times New Roman",serif;
+    font-size: 22px;
+    line-height: 1.5em;
+    margin-top: 47px!important;
+    color: #636466!important;
+}
+
+.single .property-description li {
+    line-height: 1.7em;
+}
+
+
+.blurb-extra:hover .et_pb_module_header {
+    animation: propIn 0.75s ease-in both;
+}
+
+.blurb-extra .et_pb_blurb_description p {
+    animation: propIn 0.75s ease-in both;
+}
+
+.blurb-extra:hover .et_pb_blurb_description {
+    margin-top: 30px;
+}
+
+
+.blurb-extra:hover .et_pb_blurb_description,
+.blurb-extra:hover .amenityButton {
+    display: initial;
+}
+
+.rentalBookNow {
+    float: right;
+    right: 0;
+    line-height: 1em;
+}
+
+.single h3 + .property-description {
+    margin-top: 20px !important;
+}
+
+.amenityButton,
+.blurb-extra .amenityButton {
+    background: #ca9f53;
+    color: #fff;
+    padding: 10px 30px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    display: none;
+}
+
+.amenityButton {
+    display: initial;
+}
+
+.loadmore.button {
+    text-align: center;
+    padding: 2em;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    opacity: 0.5;
+}
+
+.loading img {
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    margin-right: 20px; 
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+.blurb-extra span.line {
+    width: 100%;
+    max-width: 100%;
+    height: 1px;
+    background: #e0e0e0;
+    display: block;
+    margin: 10px auto;
+}
+
+.blurb-extra:hover span.line {
+    background: #222;
+}
+
+.filter-buttons a.active {
+    background-color: rgb(204, 159, 83);
+    color: #fff;
+}
+
+form.easy-property-search-filters {
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+form.easy-property-search-filters .formGroup {
+    padding: 15px 30px;
+    background: #f3ebcf;
+}
+
+form.easy-property-search-filters input[type="text"],
+form.easy-property-search-filters input[type="number"],
+form.easy-property-search-filters select {
+    width: 100%;
+    border-radius: 3px;
+    line-height: 2.5em;
+    padding: 2px 5px;
+    border: 1px solid #99937e;
+    min-height: 40px;
+}
+
+
+.filter-buttons + .filter-form form > div {
+    display: none;
+}
+
+.filter-buttons + .filter-form form > div.visible {
+    display: initial;
+}
+
+.property-list-message {
+    text-align: center;
+}
+
+.property-list-message .success {
+    background: #dcffb3;
+    color: #009688;
+    padding: 15px 30px;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.property-list-message .error {
+    background: #fcdbe6;
+    color: #F44336;
+    padding: 15px 30px;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.property-meta {
+    font-size: 0;
+}
+
+.property-meta .meta {
+    width: 50%;
+    display: inline-block;
+    border: 1px solid #636363;
+    border-bottom: 0px;
+    border-style: inset;
+    padding: 20px;
+    text-align: center;
+    font-size: 10px;
+    font-family: 'Montserrat',Helvetica,Arial,Lucida,sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #636466;
+    text-transform: uppercase;
+}
+
+.property-meta .meta.full {
+    width: 100%;
+}
+
+.property-meta .meta:not(.full):nth-child(odd) {
+    border-left: 0px;
+}
+
+.property-meta .meta:nth-last-child(2),
+.property-meta .meta:last-of-type {
+    border-bottom: 1px solid #636363;
+}
+
+.property-meta + .property-meta .full {
+    border-top: 0;
+}
+
+
+
+@keyframes propIn {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 40%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+
+
+/** PROPERTY SINGLE ITEM **/
+.single h1 {
+    font-family: 'Montserrat',Helvetica,Arial,Lucida,sans-serif;
+    text-transform: uppercase;
+    font-size: 30px;
+    color: #636466!important;
+    letter-spacing: 5px;
+    line-height: 1.3em;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.single h3 {
+    font-family: 'Cormorant',Georgia,"Times New Roman",serif;
+    font-size: 42px;
+    color: #666;
+}
+
+.single .property-description {
+    font-family: 'Cormorant',Georgia,"Times New Roman",serif;
+    font-size: 22px;
+    line-height: 1.5em;
+    margin-top: 47px!important;
+    color: #636466!important;
+    text-align: left;
+}
+
+.single .line {
+    border-bottom: 2px solid #e0e0e0!important;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+@media screen and (max-width: 980px) {
+    .property-list .blurb-extra {
+        width: calc(100% - 20px);
+        margin: 10px;
+        padding: 10px;
+    }
+}
+
+
