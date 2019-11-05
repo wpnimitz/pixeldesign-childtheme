@@ -425,7 +425,10 @@ function rental_metabox_callback( $meta_id ) {
 
 
 
-	echo '<h2 class="fullwidth additional-heading">Bedroom Details</h2>';
+	echo '<h2 class="fullwidth additional-heading">Bedroom Details <span class="add_more_bedroom">Add</span></h2>';
+
+	echo '<div class="main_bedroom_details">';
+
 	echo '<div class="child-epl-options">';
 	echo "Bedroom Label: <br>";
 	echo '<input name="bedroom_label[]" type="text">';
@@ -434,9 +437,12 @@ function rental_metabox_callback( $meta_id ) {
 	echo '<div class="child-epl-options">';
 	echo "Bedroom Details: <br>";
 	echo '<input name="bedroom_details[]" type="text">';
-	echo '</div>'; //Bedroom Details
+	echo '</div>'; 
 
-	
+	echo '<span class="remove_bedroom">Remove</span>';
+	echo '</div>'; //main bedroom details
+
+
 
 	echo '</div>'; //delmar property details
 }
