@@ -26,6 +26,7 @@ jQuery(document).ready(function( $ ) {
 
         //reset
         $("#top-menu > li").addClass("hidemenu");
+        console.log("hiding menus")
         $("#et-secondary-nav > li").removeClass("strong");
         $("#top-header").hide();
 
@@ -38,9 +39,9 @@ jQuery(document).ready(function( $ ) {
         } else {
 
             if($fromBody) {
-                if( $('body').hasClass("rental-properties") OR $('body').hasClass('single-property') ) {
+                if( $('body').hasClass("rental-properties") || $('body').hasClass('single-property') ) {
                     sMenu = "rental";               
-                } else if( $('body').hasClass("properties") OR $('body').hasClass('single-rental') ) {
+                } else if( $('body').hasClass("properties") || $('body').hasClass('single-rental') ) {
                     sMenu = "restate";
                 } else if ( $('body').hasClass("development") ) {
                     sMenu = "difference";
