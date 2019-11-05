@@ -431,7 +431,7 @@ function rental_metabox_callback( $meta_id ) {
 	echo "Bedroom Label: <br>";
 	echo '<input name="bedroom_label[]" type="text">';
 
-	echo '<br>'
+	echo '<br>';
 
 	echo "Bedroom Details: <br>";
 	echo '<input name="bedroom_details[]" type="text">';
