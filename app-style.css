@@ -18,6 +18,10 @@
     display: none;
 }
 
+.mobile-only {
+    display: none;
+}
+
 @media screen and (max-width: 980px) {
     li.main {
         display: none !important;
