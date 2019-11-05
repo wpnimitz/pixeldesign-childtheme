@@ -126,7 +126,7 @@ function easy_property_blurb_extra($post_id, $type = "property") {
 
 				
 				if($type == 'property') {
-					$ret .= '<h4 class="et_pb_module_header"><span class"prop-title">' . $prop_title . '</span> <span class="line"></span> <span class="prop-price">$' . number_format($prop_price) .  '</span></h4>';
+					$ret .= '<h4 class="et_pb_module_header"><span class"prop-title">' . $prop_title . '</span> <span class="line"></span> <span class="prop-price">$' . number_format($prop_price) .  '</span><span class="propertyQuality"> Fully Furnished</span></h4>';
 				} else {
 					$ret .= '<h4 class="et_pb_module_header"><span class"prop-title">' . $prop_title . '</span></h4>';
 				}
@@ -134,7 +134,7 @@ function easy_property_blurb_extra($post_id, $type = "property") {
 
 				$ret .= '<div class="et_pb_blurb_description">';
 				if($type != 'property') {
-					$ret .= '<h4 class="et_pb_module_header"><span class="line"></span> <span class="prop-price">$' . number_format($prop_price) .  ' - $' . number_format($prop_price_max) . ' / Night</span></h4>';
+					$ret .= '<h4 class="et_pb_module_header"><span class="line"></span> <span class="prop-price">$' . number_format($prop_price) .  ' - $' . number_format($prop_price_max) . '</span><span class="propertyQuality"> per Night</span></h4>';
 				}
 
 				$ret .= '<p>';
