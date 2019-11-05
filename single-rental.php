@@ -47,24 +47,24 @@ $property_text_features =  get_post_meta( get_the_ID(), 'property_text_features'
 $property_text_community =  get_post_meta( get_the_ID(), 'property_text_community', true);
 
 if($property_price == "") {
-	$property_price = "2500";
+	$property_price = "0";
 }
 
 if($property_price_max == "") {
-	$property_price_max = "2500";
+	$property_price_max = "0";
 }
 
 
 if($property_indoor_space == "") {
-	$property_indoor_space = "3000";
+	$property_indoor_space = "0";
 }
 
 if($property_bedrooms == "") {
-	$property_bedrooms = "2";
+	$property_bedrooms = "0";
 }
 
 if($property_bathrooms == "") {
-	$property_bathrooms = "2";
+	$property_bathrooms = "0";
 }
 if($property_powder_room == "") {
 	$property_powder_room = "0";
