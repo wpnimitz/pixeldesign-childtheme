@@ -57,4 +57,13 @@ jQuery(document).ready(function( $ ) {
     */
     $rental_days.val($rental_days.data("blocked"));
 
+    $(".add_more_bedroom").on("click" function(){
+        var main_bedroom = $(".main_bedroom_details").html();
+
+        main_bedroom.insertAfter(".main_bedroom_details");
+     });
+
+
+
+
 });

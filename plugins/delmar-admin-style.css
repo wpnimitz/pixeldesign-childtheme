@@ -153,3 +153,25 @@ span.space {
     top: 0;
     bottom: 0;
 }
+
+
+.main_bedroom_details {
+    width: 100%;
+    display: flex;
+}
+
+span.add_more_bedroom {
+    background: green;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+
+span.remove_bedroom {
+    background: #F44336;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+}
