@@ -606,7 +606,6 @@ form.easy-property-search-filters select {
 
 .property-meta {
     font-size: 0;
-    border: 1px solid #636363;
     display: flex;
     flex-wrap: wrap;
 }
@@ -614,8 +613,8 @@ form.easy-property-search-filters select {
 .property-meta .meta {
     width: 50%;
     display: inline-block;
-    border-top: 1px;
-    border-bottom: 0px;
+    border: 1px solid #636466;
+    border-bottom: 0;
     border-style: inset;
     padding: 20px;
     text-align: center;
@@ -626,9 +625,13 @@ form.easy-property-search-filters select {
     color: #636466;
     text-transform: uppercase;
 }
-
+.meta-last {
+    border-bottom: 1px solid !important;
+}
 .property-meta .meta.full {
     width: 100%;
+    border: 1px solid;
+    border-bottom: 0;
 }
 
 .meta + .meta.full {
@@ -640,13 +643,12 @@ form.easy-property-search-filters select {
 }
 
 .meta.left {
-    border-right: 1px solid #636466;
+    border-right: 0px;
 }
 
 .bedroom.meta {
-    background: #cccccc36;
+    background: rgba(202, 159, 83, 0.2);
 }
-
 
 
 @keyframes propIn {

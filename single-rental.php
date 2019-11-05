@@ -141,11 +141,11 @@ if($property_beds == "") {
 									echo '<div class="bedroom meta">'.$bedroom_details[$i].'</div>';
 								}
 							}?>
-									<div class="meta left">
+									<div class="meta left meta-last">
 										<span class="propertyNumber"><?php echo $property_bathrooms ?></span>
 										<br>Bath Room<?php echo ($property_bathrooms > 1) ? 's' : '' ?>
 									</div>
-									<div class="meta">
+									<div class="meta  meta-last">
 										<span class="propertyNumber"><?php echo $property_powder_room ?></span>
 										<br>Powder Room<?php echo ($property_powder_room > 1) ? 's' : '' ?>
 									</div>
