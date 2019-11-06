@@ -93,7 +93,7 @@ if($property_beds == "") {
 							<div class="et_pb_column et_pb_column_2_3">
 								<h1 class="line"><?php echo $property_title ?></h1>
 								<h3>$<?php echo number_format($property_price) ?>  - $<?php echo number_format($property_price_max) ?><span class="priceDetail"> Per Night</span> </h3>
-								<div class="propertyButtons"><a class="amenityButton" href="#">Book Now</a>&nbsp;<a class="amenityButton" href="#">Share this property</a></div>
+								<div class="propertyButtons"><a class="amenityButton" href="#unique_overlay_menu_id_13593" id="overlay_unique_id_13593"	>Book Now</a>&nbsp;<a class="amenityButton" id="overlay_unique_id_13600" href="#unique_overlay_menu_id_13600">Share this property</a></div>
 								<div class="property-description">
 									<?php echo $property_description ?>
 								</div>
