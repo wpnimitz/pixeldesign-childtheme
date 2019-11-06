@@ -142,7 +142,7 @@ function easy_property_blurb_extra($post_id, $type = "property") {
 
 				$ret .= '<div class="et_pb_blurb_description">';
 				if($type != 'property') {
-					$ret .= '<h4 class="et_pb_module_header"><span class="line"></span> <span class="prop-price">$' . number_format($prop_price) .  ' - $' . number_format($prop_price_max) . '</span><span class="propertyQuality"> per Night</span></h4>';
+					$ret .= '<h4 class="et_pb_module_header"><span class="line"></span> <span class="prop-price">$' . number_format($prop_price) .  ' - $' . number_format($prop_price_max) . '</span><span class="propertyQuality_grid"> per Night</span></h4>';
 				}
 
 				$ret .= '<p>';
