@@ -137,7 +137,7 @@ if($property_beds == "") {
 										<br>Sq Ft Indoor Living Space
 									</div>
 									
-									<div class="meta full">
+									<div class="meta full noBottomBorder">
 									<span class="propertyNumber"><?php echo $property_bedrooms ?></span>
 										<br>Bedroom<?php echo ($property_bedrooms > 1) ? 's' : '' ?>
 									<?php if(!empty($bedroom_label)) {
