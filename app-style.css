@@ -640,8 +640,8 @@ form.easy-property-search-filters select {
 
 .meta.full + .meta.full {
     border-top: 1px solid;
+    border-bottom: 0;
 }
-
 .meta.left {
     border-right: 0px;
 }
