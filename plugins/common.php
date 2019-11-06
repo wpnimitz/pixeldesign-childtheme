@@ -118,6 +118,13 @@ function easy_property_blurb_extra($post_id, $type = "property") {
 		$prop_price_max = 0;
 	}
 
+	$property_status = get_post_meta( get_the_ID(), 'property_status', true);
+	if($property_status == "new") {
+		$property_status_text = "Fully Furnished";
+	} else {
+		$property_status_text = "";
+	}
+
 
 	$ret = '<div class="blurb-extra et_pb_blurb '. $type .'" style="background-image:url('.$featured_image.')">';
 
@@ -126,7 +133,8 @@ function easy_property_blurb_extra($post_id, $type = "property") {
 
 				
 				if($type == 'property') {
-					$ret .= '<h4 class="et_pb_module_header"><span class"prop-title">' . $prop_title . '</span> <span class="line"></span> <span class="prop-price">$' . number_format($prop_price) .  '</span><span class="propertyQuality"> Fully Furnished</span></h4>';
+					$ret .= '<h4 class="et_pb_module_header"><span class"prop-title">' . $prop_title . '</span> <span class="line"></span> <span class="prop-price">$' . number_format($prop_price) .  '</span>
+						</h4>';
 				} else {
 					$ret .= '<h4 class="et_pb_module_header"><span class"prop-title">' . $prop_title . '</span></h4>';
 				}

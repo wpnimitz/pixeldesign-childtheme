@@ -26,7 +26,7 @@ if( empty($property_individual_title) ) {
 	$property_title = $property_title . ' - ' . $property_individual_title;
 }
 
-$property_status = get_post_meta( get_the_ID(), 'property_status', true);
+
 $property_price =  get_post_meta( get_the_ID(), 'property_price', true);
 $property_description =  get_post_meta( get_the_ID(), 'property_description', true);
 
@@ -43,6 +43,12 @@ $property_garage_stalls =  get_post_meta( get_the_ID(), 'property_garage_stalls'
 $property_text_features =  get_post_meta( get_the_ID(), 'property_text_features', true);
 $property_text_community =  get_post_meta( get_the_ID(), 'property_text_community', true);
 
+$property_status = get_post_meta( get_the_ID(), 'property_status', true);
+if($property_status == "new") {
+	$property_status_text = "Fully Furnished";
+} else {
+	$property_status_text = "";
+}
 
 ?>
 
@@ -57,10 +63,10 @@ $property_text_community =  get_post_meta( get_the_ID(), 'property_text_communit
 							<div class="et_pb_column et_pb_column_2_3">
 								<h1 class="line"><?php echo $property_title ?></h1>
 								<h3>$<?php echo number_format($property_price) ?>
-									<span class="priceDetail"> <?php echo $property_status; ?></span>
+									<span class="priceDetail"> <?php echo $property_status_text; ?></span>
 								</h3>
 								<div class="property-description">
-									<?php echo $property_description ?>
+									<?php echo $property_description; ?>
 								</div>
 							</div>
 							<div class="et_pb_column et_pb_column_1_3">
