@@ -141,7 +141,7 @@ if($property_beds == "") {
 									<span class="propertyNumber"><?php echo $property_bedrooms ?></span>
 										<br>Bedroom<?php echo ($property_bedrooms > 1) ? 's' : '' ?>
 									<?php if(!empty($bedroom_label)) {
-										echo '<table id="bedrooms" class="bedroomsDetails" style="border:3px solid red;">';
+										echo '<table id="bedrooms" class="bedroomsDetails">';
 										for ($i=0; $i < count($bedroom_label); $i++) { 
 											echo '<tr>';
 											echo '<td class="bedroomName">'.$bedroom_label[$i].'</td>';
