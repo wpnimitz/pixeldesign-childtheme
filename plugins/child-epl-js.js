@@ -7,7 +7,7 @@ jQuery(document).ready(function( $ ) {
         restate : $mainSite + 'properties/',
         rental : $mainSite + 'rental-properties/',
         difference : $mainSite + 'development/',
-        assetSVG : '/wp-content/themes/divi-child/assets/svg/'
+        assetSVG : '/wp-content/themes/pixeldesign-childtheme/assets/svg/'
     }
 
     //temporary fix for mobile issue
