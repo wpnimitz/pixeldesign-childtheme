@@ -27,9 +27,10 @@
         display: none !important;
     }
 
-    .hidemenu.mobile-only {
+    .hidemenu.mobile-only, .mobile-only {
         display: block !important;
     }
+
 }
 
 .wrapper {

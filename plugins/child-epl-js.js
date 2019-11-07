@@ -7,7 +7,8 @@ jQuery(document).ready(function( $ ) {
         restate : $mainSite + 'properties/',
         rental : $mainSite + 'rental-properties/',
         difference : $mainSite + 'development/',
-        assetSVG : '/wp-content/themes/pixeldesign-childtheme/assets/svg/'
+        assetSVG : '/wp-content/themes/pixeldesign-childtheme/assets/svg/',
+        version : '1.0.6'
     }
 
     //temporary fix for mobile issue
@@ -17,19 +18,20 @@ jQuery(document).ready(function( $ ) {
         $fromBody = true;
     }
 
+    //console.log("Version: " + $common["version"])
+
 
     //initial function
     function checkMenu() {
         logo_img = $(".logo_container img");
         logo_link = $(".logo_container a");
-        sMenu = Cookies.get('sMenu');;
+        sMenu = Cookies.get('sMenu');
 
         //reset
         $("#top-menu > li").addClass("hidemenu");
-        console.log("hiding menus")
         $("#et-secondary-nav > li").removeClass("strong");
         
-
+        //try condition first
         if( $('body').hasClass("home") ) {
             sMenu = "actual";
             $("#top-header").hide();
@@ -37,18 +39,17 @@ jQuery(document).ready(function( $ ) {
             sMenu = "restate";
         } else if ( $('body').hasClass('single-rental') ) {
             sMenu = "rental";
+        } else if ( $('body').hasClass('rental-properties') ) {
+            sMenu = "rental";
+        } else if ( $('body').hasClass('properties') ) {
+            sMenu = "restate";
+        } else if ( $('body').hasClass("development") ) {
+            sMenu = "difference";
         } else {
-            if($fromBody) {
-                if( $('body').hasClass("rental-properties") ) {
-                    sMenu = "rental";               
-                } else if( $('body').hasClass("properties") ) {
-                    sMenu = "restate";
-                } else if ( $('body').hasClass("development") ) {
-                    sMenu = "difference";
-                } 
-                Cookies.set('sMenu', sMenu);
-            }
+            console.log("no condition found main check");
         }
+        Cookies.set('sMenu', sMenu);
+        //console.log("revealing menu: " + sMenu);
 
         logo_img.attr("src", $common["assetSVG"] + sMenu + '.svg');
         logo_img.removeClass().addClass(sMenu)
@@ -56,9 +57,6 @@ jQuery(document).ready(function( $ ) {
         $("#et-secondary-nav li." + sMenu).addClass("strong");
         $("#top-menu li." + sMenu).removeClass("hidemenu");  
     }
-
-
-
     checkMenu();
 
 
@@ -69,11 +67,9 @@ jQuery(document).ready(function( $ ) {
     .top-header is added as a class on the menu
     .delmar-logo is added as a header snipper in header.php
     **/
-    $("#top-header a, .top-header a, .delmar-logo a, #mobile_menu a").on("click", function(e) {
-        e.preventDefault(); // needs to be removed
-        $menuClick = true;
-        aHTML = $(this).html();
-
+    function click_menus(e) {
+        aHTML = $(e).html();
+        parentA = $(e).parent();
 
         if(aHTML == "Real Estate" ) {
             sMenu = "restate";
@@ -82,42 +78,36 @@ jQuery(document).ready(function( $ ) {
         } else if (aHTML == "The Del Mar Difference") {
             sMenu = "difference";
         } else {
-            sMenu = "actual";
+            console.log("click event");
+            if( parentA.hasClass('rental') ) {
+                sMenu = "rental";
+            } else if ( parentA.hasClass('restate') ) {
+                sMenu = "restate";
+            } else if ( parentA.hasClass('difference') ) {
+                sMenu = "difference";
+            } else {
+                console.log("no condition on click event");
+            }
         }
-        Cookies.set('sMenu', sMenu);
-        console.log("triggered"); // needs to be removed
 
-        location.href = $(this).attr('href'); // needs to be removed
+        Cookies.set('sMenu', sMenu);
+        //console.log("triggered: " + sMenu); // needs to be removed
+        location.href = $(this).attr('href');
+    }
+
+    $("#top-header a, .top-header a, .delmar-logo a").on("click", function(e) {
+        click_menus($(this));
     });
 
-    $(".top-header a,#mobile_menu a").on("touchstart", function(e) {
-        e.preventDefault(); // needs to be removed
-        aHTML = $(this);
-
-        if(aHTML.hasClass == "Real Estate") {
-            sMenu = "restate";
-        } else if (aHTML == "Rental") {
-            sMenu = "rental";
-        } else if (aHTML == "The Del Mar Difference") {
-            sMenu = "difference";
-        } else {
-            sMenu = "actual";
-        }
-        Cookies.set('sMenu', sMenu);
-        console.log("triggered"); // needs to be removed
-
-        location.href = $(this).attr('href'); // needs to be removed
-    });
+    $("#main-header").on("click", "#mobile_menu a", function(){
+        //console.log("mobile item");
+        click_menus($(this)); 
+    })
 
 
     $(".logo_container img").on("click", function(e) {
         Cookies.set('sMenu', $(this).attr("class"));
     })
-
-
-    
-    console.log(sMenu);
-
 
     $(".filter-buttons a").on("click", function(e){
         e.preventDefault();

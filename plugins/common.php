@@ -200,32 +200,6 @@ function get_easy_property_list_ajax() {
 	  'posts_per_page' => '10'
 	);
 
-	// $args = array(
-	// 	'post_type'   => $post_type,
-	// 	'posts_per_page' => '10',
-	// 	'paged' => $paged,
-	// 	'meta_query' => array(
-	// 	  	array(
-	// 			'key' => $key1,
-	// 			'value'   => $key1_value,
-	// 	        'compare' => '>=',
-	// 		),
-	// 		array(
-	// 			'key' => $key2,
-	// 			'value'   => $key2_value,
-	// 	        'compare' => '>=',
-	// 		)
-	// 		//<== the list may go one
-	// 	),
-	// 	'tax_query' => array(
-	// 		'taxonomy' => $tax,
-	// 		'field' => 'slug',
-	// 		'terms' => array($tax_value) 
-	// 	)
-	// );
-
-	
-	
 	//paged works on the continouos scroll
 	if(isset($paged)) {
 		$args['paged'] = $paged;
@@ -233,108 +207,64 @@ function get_easy_property_list_ajax() {
 
 	
 	//both real estate properties and rental properties are using this cutom meta
-	$bedrooms = $_REQUEST["bedrooms"];
+	if( isset($property_status) && $property_status != "" ) {
+		$bedrooms = $_REQUEST["bedrooms"];
+		$args['meta_query'][] = array(
+			'key' => 'property_bedrooms',
+			'value'   => $bedrooms,
+	        'compare' => '>=',
+		);
+	}
+	
+
+
+	//do property real estate
+	$minPrice = $_REQUEST["minPrice"];
+	$maxPrice = $_REQUEST["maxPrice"];
+	
+	$prop_status = $_REQUEST["listingOptions"];
+
+	if( $minPrice == "") {
+		$minPrice = 0;
+	}
+	if( $maxPrice == "") {
+		$maxPrice = 200000000;
+	}
+
 	$args['meta_query'][] = array(
-		'key' => 'property_bedrooms',
-		'value'   => $bedrooms,
-        'compare' => '>=',
+		'key' => 'property_price',
+		'value'   => array( $minPrice, $maxPrice ),
+        'type'    => 'numeric',
+        'compare' => 'BETWEEN',
 	);
 
-
-	if($post_type == "property") {
-		//do property real estate
-		$minPrice = $_REQUEST["minPrice"];
-		$maxPrice = $_REQUEST["maxPrice"];
-		
-		$prop_status = $_REQUEST["listingOptions"];
-
-		if( $minPrice == "") {
-			$minPrice = 0;
-		}
-		if( $maxPrice == "") {
-			$maxPrice = 200000000;
-		}
-
-		$args['meta_query'][] = array(
-			'key' => 'property_price',
-			'value'   => array( $minPrice, $maxPrice ),
-	        'type'    => 'numeric',
-	        'compare' => 'BETWEEN',
-		);
-
+	if( isset($property_status) && $property_status != "" ) {
 		$args['meta_query'][] = array(
 			'key' => 'property_status',
 			'value'   => $prop_status,
 	        'compare' => '=',
 		);
+	}
 
-		if(isset($sortOrder) && $sortOrder == 'lowtohigh') {
-			$args['orderby'] = 'meta_value_num';
-			$args['meta_key'] = 'property_price';
-			$args['order'] = 'ASC';
-		} else {
-			$args['orderby'] = 'meta_value_num';
-			$args['meta_key'] = 'property_price';
-			$args['order'] = 'DESC';
-		}
-
+	if(isset($sortOrder) && $sortOrder == 'lowtohigh') {
+		$args['orderby'] = 'meta_value_num';
+		$args['meta_key'] = 'property_price';
+		$args['order'] = 'ASC';
 	} else {
-		if($num_bedrooms == "") {
-			$num_bedrooms = 0;
-		}
-		// $args['meta_query']['relation'] = "AND";
+		$args['orderby'] = 'meta_value_num';
+		$args['meta_key'] = 'property_price';
+		$args['order'] = 'DESC';
+	}
+
+
+
+	if( isset($property_type) && $property_type != "" ) {
 		$args['meta_query'][] = array(
-			'key' => 'property_beds',
-			'value'   => $num_bedrooms,
-	        'compare' => '>=',
+			'key' => 'type_' . $property_type
 		);
-
-		//need to play with 
-		//$arrival
-		//$departure
-		//unavailable_rental_days
-
-		// Start date
-		$date = strtotime($arrival);
-		// End date
-		$end_date = strtotime($departure);
-
-		while (strtotime($date) <= strtotime($end_date)) {
-			$args['meta_query'][] = array(
-				'key' => 'date_blocked',
-				'value'   =>  date("Y-m-d", strtotime($date)),
-		        'compare' => '!=',
-			);
-
-			$date = date("Y-m-d", strtotime("+1 day", strtotime($date)));
-		}
-
-
-
-
 	}
 
 
-
-	//let be creative using taxonomies
-	//property_type use for real estate properties
-	//rental_views use for rental properties
-
-	if( isset($property_type) ) {
-		if($property_type != "") {
-			$args['meta_query'][] = array(
-				'key' => 'type_' . $property_type
-			);
-		}
-	}
-
-	if( isset($rental_views) ) {
-		if( !empty($rental_views) ) {
-			$args['meta_query'][] = array(
-				'key' => 'views_' . $rental_views
-			);
-		}
-	}
 
 	$loop = new WP_Query( $args );
 	while ( $loop->have_posts() ) : $loop->the_post();
@@ -345,7 +275,7 @@ function get_easy_property_list_ajax() {
 	if( $loop->have_posts() ) {
 		wp_send_json_success( $success );
 	} else {
-		wp_send_json_error( "Something went wrong! Please try again later. If the issues is persistent, please contact us. Error: " . $loop->last_query() );
+		wp_send_json_error( "Something went wrong! Please try again later. If the issues is persistent, please contact us. Error: " . $loop->last_error );
 	}
 
 	wp_reset_postdata();
