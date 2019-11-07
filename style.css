@@ -16,9 +16,6 @@ Add Your Customization in app-style.css
 
 
 
-
-table, tr, td,{
-
-    border: none;
-
+.entry-content tr td, body.et-pb-preview #main-content .container tr td {
+    border-top: none;
 }
