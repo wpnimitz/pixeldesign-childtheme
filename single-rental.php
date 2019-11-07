@@ -156,7 +156,7 @@ if($property_beds == "") {
 
 									<div class="meta left meta-last">
 										<span class="propertyNumber"><?php echo $property_bathrooms ?></span>
-										<br>Bath Room<?php echo ($property_bathrooms > 1) ? 's' : '' ?>
+										<br>Bathroom<?php echo ($property_bathrooms > 1) ? 's' : '' ?>
 									</div>
 									<div class="meta  meta-last">
 										<span class="propertyNumber"><?php echo $property_powder_room ?></span>

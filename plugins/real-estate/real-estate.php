@@ -179,11 +179,11 @@ function cepl_meta_box_callback( $meta_id ) {
 	$property_outdoor_space = get_post_meta( $meta_id->ID, 'property_outdoor_space', true );
 	echo '<input type="number" step="1" name="property_outdoor_space" placeholder="Enter outdoor living space in Sq Ft." value="'.  $property_outdoor_space .'">';
 
-	echo '<h3>Bed Rooms</h3>';
+	echo '<h3>Bedrooms</h3>';
 	$property_bedrooms = get_post_meta( $meta_id->ID, 'property_bedrooms', true );
 	echo '<input type="number" step="1" name="property_bedrooms" placeholder="How many bedrooms?" value="'.  $property_bedrooms .'">';
 
-	echo '<h3>Bath Rooms</h3>';
+	echo '<h3>Bathrooms</h3>';
 	$property_bathrooms = get_post_meta( $meta_id->ID, 'property_bathrooms', true );
 	echo '<input type="number" step="1" name="property_bathrooms" placeholder="How many bathrooms?" value="'.  $property_bathrooms .'">';
 

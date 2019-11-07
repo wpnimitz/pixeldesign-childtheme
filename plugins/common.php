@@ -156,9 +156,9 @@ function easy_property_blurb_extra($post_id, $type = "property") {
 				}
 
 				if($prop_bathrooms > 1) {
-					$ret .= ' / ' . $prop_bathrooms . ' Bath Rooms';
+					$ret .= ' / ' . $prop_bathrooms . ' Bathrooms';
 				} else {
-					$ret .= ' / ' . $prop_bathrooms . ' Bath Room';
+					$ret .= ' / ' . $prop_bathrooms . ' Bathroom';
 				}
 
 				

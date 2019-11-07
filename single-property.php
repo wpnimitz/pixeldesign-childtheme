@@ -77,11 +77,11 @@ if($property_status == "new") {
 									</div>
 									<div class="two">
 										<span class="propertyNumber"><?php echo $property_bedrooms ?></span>
-										<br>Bed Room<?php echo ($property_bedrooms > 1) ? 's' : '' ?>
+										<br>Bedroom<?php echo ($property_bedrooms > 1) ? 's' : '' ?>
 									</div>
 									<div class="three">
 										<span class="propertyNumber"><?php echo $property_bathrooms ?></span>
-										<br>Bath Room<?php echo ($property_bathrooms > 1) ? 's' : '' ?>
+										<br>Bathroom<?php echo ($property_bathrooms > 1) ? 's' : '' ?>
 									</div>
 									<div class="four">
 										<span class="propertyNumber"><?php echo $property_powder_room ?></span>
