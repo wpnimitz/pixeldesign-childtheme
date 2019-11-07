@@ -92,7 +92,8 @@ if($property_status == "new") {
 										<br>Garage Stall<?php echo ($property_garage_stalls > 1) ? 's' : '' ?>
 									</div>
 								</div>
-								<p>asdf</p>
+								<br>
+								<div style="margin-top: 1.5em;clear:left;'"><a class="amenityButton locButton" href="#unique_overlay_menu_id_13643" id="overlay_unique_id_13643"	>View Location</a></div>
 							</div>
 						</div>
 
