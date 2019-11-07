@@ -80,16 +80,16 @@ if($property_status == "new") {
 										<br>Bedroom<?php echo ($property_bedrooms > 1) ? 's' : '' ?>
 									</div>
 									<div class="three">
+										<span class="propertyNumber"><?php echo $property_garage_stalls ?></span>
+										<br>Garage Stall<?php echo ($property_garage_stalls > 1) ? 's' : '' ?>
+									</div>
+									<div class="four">
 										<span class="propertyNumber"><?php echo $property_bathrooms ?></span>
 										<br>Bathroom<?php echo ($property_bathrooms > 1) ? 's' : '' ?>
 									</div>
-									<div class="four">
+									<div class="five">
 										<span class="propertyNumber"><?php echo $property_powder_room ?></span>
 										<br>Powder Room<?php echo ($property_powder_room > 1) ? 's' : '' ?>
-									</div>
-									<div class="five">
-										<span class="propertyNumber"><?php echo $property_garage_stalls ?></span>
-										<br>Garage Stall<?php echo ($property_garage_stalls > 1) ? 's' : '' ?>
 									</div>
 								</div>
 								<br>
