@@ -162,11 +162,11 @@ if($property_beds == "") {
 										<span class="propertyNumber"><?php echo $property_powder_room ?></span>
 										<br>Half Bath<?php echo ($property_powder_room > 1) ? 's' : '' ?>
 									</div>
-									<!--<div style="margin-top: 1.5em;clear:left;'"><a class="amenityButton" href="#unique_overlay_menu_id_13593" id="overlay_unique_id_13593"	>View Location</a></div>-->
+									<p>asdf</p>
 								</div>
 								
 							</div>
-							
+							<!--<div style="margin-top: 1.5em;clear:left;'"><a class="amenityButton" href="#unique_overlay_menu_id_13593" id="overlay_unique_id_13593"	>View Location</a></div>-->
 							<!-- END: Property Grid layout -->
 						</div>
 						
