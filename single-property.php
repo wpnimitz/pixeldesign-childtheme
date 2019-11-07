@@ -92,6 +92,7 @@ if($property_status == "new") {
 										<br>Garage Stall<?php echo ($property_garage_stalls > 1) ? 's' : '' ?>
 									</div>
 								</div>
+								<p>asdf</p>
 							</div>
 						</div>
 
