@@ -268,7 +268,7 @@ jQuery(document).ready(function( $ ) {
         allowtoLoad = false;
         if(maxPage <= currentPage) {
             $(".loadmore .loading").show().addClass("success");
-            $(".loadmore .message").html("Thats all!");
+            $(".loadmore .message").html("All Results Displayed");
             $(".loadmore img").hide();
             allowtoLoad = false
         } else {
