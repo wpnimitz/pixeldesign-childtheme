@@ -162,7 +162,7 @@ if($property_beds == "") {
 										<span class="propertyNumber"><?php echo $property_powder_room ?></span>
 										<br>Half Bath<?php echo ($property_powder_room > 1) ? 's' : '' ?>
 									</div>
-									<p>asdf</p>
+									<h1>asdf</h1>
 								</div>
 								
 							</div>
