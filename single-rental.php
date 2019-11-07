@@ -93,7 +93,7 @@ if($property_beds == "") {
 							<div class="et_pb_column et_pb_column_2_3">
 								<h1 class="line"><?php echo $property_title ?></h1>
 								<h3>$<?php echo number_format($property_price) ?>  - $<?php echo number_format($property_price_max) ?><span class="priceDetail"> Per Night</span> </h3>
-								<div class="propertyButtons"><a class="amenityButton" href="#">Book Now</a>&nbsp;<a class="amenityButton" href="#">Share this property</a></div>
+								<div class="propertyButtons"><a class="amenityButton" href="#unique_overlay_menu_id_13593" id="overlay_unique_id_13593"	>Book Now</a>&nbsp;<a class="amenityButton whiteFill" id="overlay_unique_id_13600" href="#unique_overlay_menu_id_13600">Share this property</a></div>
 								<div class="property-description">
 									<?php echo $property_description ?>
 								</div>
@@ -137,11 +137,11 @@ if($property_beds == "") {
 										<br>Sq Ft Indoor Living Space
 									</div>
 									
-									<div class="meta full">
+									<div class="meta full noBottomBorder">
 									<span class="propertyNumber"><?php echo $property_bedrooms ?></span>
 										<br>Bedroom<?php echo ($property_bedrooms > 1) ? 's' : '' ?>
 									<?php if(!empty($bedroom_label)) {
-										echo '<table id="bedrooms" class="bedroomsDetails" style="border:3px solid red;">';
+										echo '<table id="bedrooms" class="bedroomsDetails">';
 										for ($i=0; $i < count($bedroom_label); $i++) { 
 											echo '<tr>';
 											echo '<td class="bedroomName">'.$bedroom_label[$i].'</td>';
@@ -163,10 +163,13 @@ if($property_beds == "") {
 										<br>Half Bath<?php echo ($property_powder_room > 1) ? 's' : '' ?>
 									</div>
 									
-								</div>
+								</div><br>
+								<div style="margin-top: 1.5em;clear:left;'"><a class="amenityButton locButton" href="#unique_overlay_menu_id_13643" id="overlay_unique_id_13643"	>View Location</a></div>
 							</div>
-							<!-- END: Property Grid layout -->
+
+							<!-- END: Property Grid layout asdf -->
 						</div>
+						
 						
 						<?php if(!empty($property_text_features)) {?>
 						<div class="et_pb_row property-features">
