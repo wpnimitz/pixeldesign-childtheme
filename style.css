@@ -17,7 +17,7 @@ Add Your Customization in app-style.css
 
 
 
-.entry-content table, body.et-pb-preview #main-content .container table,.entry-content table, body.et-pb-preview #main-content .container table tr,.entry-content table, body.et-pb-preview #main-content .container table tr td,{
+table, tr, td,{
 
     border: none;
 
