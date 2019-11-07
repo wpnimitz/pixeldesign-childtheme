@@ -78,6 +78,7 @@ jQuery(document).ready(function( $ ) {
         } else if (aHTML == "The Del Mar Difference") {
             sMenu = "difference";
         } else {
+            console.log("click event");
             if( parentA.hasClass('rental') ) {
                 sMenu = "rental";
             } else if ( parentA.hasClass('restate') ) {
