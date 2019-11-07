@@ -13,3 +13,13 @@
 ------------------------------
 Add Your Customization in app-style.css
 ------------------------------ */
+
+
+
+
+.entry-content table, body.et-pb-preview #main-content .container table {
+    width: 100%;
+    margin: 0 0 15px 0;
+    border: none;
+    text-align: left;
+}
