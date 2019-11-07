@@ -164,8 +164,9 @@ if($property_beds == "") {
 									</div>
 									
 								</div>
-								<div style="margin-top: 1.5em'"><a class="amenityButton" href="#unique_overlay_menu_id_13593" id="overlay_unique_id_13593"	>View Location</a></div>
+								
 							</div>
+							<div style="margin-top: 1.5em'"><a class="amenityButton" href="#unique_overlay_menu_id_13593" id="overlay_unique_id_13593"	>View Location</a></div>
 							<!-- END: Property Grid layout -->
 						</div>
 						
