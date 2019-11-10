@@ -258,6 +258,10 @@ function rental_metabox_callback( $meta_id ) {
 	echo '<h2 class="fullwidth">Property Information</h2>';
 
 	echo '<div class="child-epl-options">';
+	echo '<h3>VRP Assigned ID (Important)</h3>';
+	$vrp_assigned_id = get_post_meta( $meta_id->ID, 'vrp_assigned_id', true );
+
+	echo = '<input type="number" step="1" name="vrp_assigned_id" value="'. $vrp_assigned_id. '" placeholder="VRP Assigned ID" required>'
 
 	echo '<h3>Assign a Slider</h3>';
 	$property_assigned_slider = get_post_meta( $meta_id->ID, 'property_assigned_slider', true );
@@ -491,6 +495,9 @@ function rental_meta_box_save_metabox( $post_id ) {
   
   if ( isset($_POST['property_assigned_slider']) ) {        
     update_post_meta($post_id, 'property_assigned_slider', sanitize_text_field($_POST['property_assigned_slider']));      
+  }
+  if ( isset($_POST['vrp_assigned_id']) ) {        
+    update_post_meta($post_id, 'vrp_assigned_id', sanitize_text_field($_POST['vrp_assigned_id']));      
   }
   if ( isset($_POST['property_individual_title']) ) {        
     update_post_meta($post_id, 'property_individual_title', sanitize_text_field($_POST['property_individual_title']));      
