@@ -261,7 +261,7 @@ function rental_metabox_callback( $meta_id ) {
 	echo '<h3>VRP Assigned ID (Important)</h3>';
 	$vrp_assigned_id = get_post_meta( $meta_id->ID, 'vrp_assigned_id', true );
 
-	echo = '<input type="number" step="1" name="vrp_assigned_id" value="'. $vrp_assigned_id. '" placeholder="VRP Assigned ID" required>';
+	echo '<input type="number" step="1" name="vrp_assigned_id" value="'. $vrp_assigned_id. '" placeholder="VRP Assigned ID" required>';
 
 	echo '<h3>Assign a Slider</h3>';
 	$property_assigned_slider = get_post_meta( $meta_id->ID, 'property_assigned_slider', true );
