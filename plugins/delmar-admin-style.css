@@ -185,3 +185,24 @@ span.remove_bedroom {
 #main-bedroom-wrapper .remove_bedroom {
     display: none;
 }
+
+
+.rental_mapper {
+    text-align: center;
+    position: relative;
+}
+
+.rental_mapper img {
+    opacity: 1 !important;
+    width: 100%;   
+}
+
+.easy-marker {
+    background-size: auto !important;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.easy-tools {
+    display: none !important;
+}

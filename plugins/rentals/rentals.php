@@ -289,8 +289,7 @@ function rental_metabox_callback( $meta_id ) {
     			'quicktags'     => array("buttons"=>"link,img,close"),
                 'wpautop'       =>      true,
                 'textarea_name' =>      'property_description',
-                'textarea_rows' =>      10,
-                'tinymce'       => 		false,
+                'textarea_rows' =>      10
         	)
     );
 
@@ -400,8 +399,7 @@ function rental_metabox_callback( $meta_id ) {
                 'wpautop'       =>      true,
                 'media_buttons' =>      false,
                 'textarea_name' =>      'property_text_features',
-                'textarea_rows' =>      10,
-                'teeny'         =>      true
+                'textarea_rows' =>      10
         	)
     );
 	echo '</div>';
@@ -417,23 +415,12 @@ function rental_metabox_callback( $meta_id ) {
                 'wpautop'       =>      true,
                 'media_buttons' =>      false,
                 'textarea_name' =>      'property_text_community',
-                'textarea_rows' =>      10,
-                'teeny'         =>      true
+                'textarea_rows' =>      10
         	)
     );
 	echo '</div>';
 
-	echo '<div class="unavailable-adder">';
-	echo '<h2 class="fullwidth additional-heading">Block Unavailable / Booked / Holiday Days</h2>';
-	$unavailable_rental_days = get_post_meta( $meta_id->ID, 'unavailable_rental_days', true );
-	echo '<input type="hidden" name="unavailable_rental_days" value="'.$unavailable_rental_days.'" data-blocked="'.$unavailable_rental_days.'">';
-	//echo '<input type="hidden" name="unavailable_rental_days" value="">';
-
-	echo '<h3>Blocked Days</h3>';
-	echo '<div class="display-unavailable"></div>';
-	echo '<h3>Select the date from the calendar below. Format: MM/DD/YYYY</h3><br />';
-	echo '<div class="form-group"><input type="text" name="unavailable_adder" value=""></div>';
-	echo '</div>';
+	
 
 
 
@@ -476,7 +463,80 @@ function rental_metabox_callback( $meta_id ) {
 		echo '</div>'; //main bedroom details
 	}
 
-	echo'</div>';
+	echo '</div>';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	echo '<h2 class="fullwidth additional-heading">Map Pin Mapper</h2>';
+
+	echo '<div class="mapper-defaults" style="display:none;">';
+		echo '<img src="'. get_stylesheet_directory_uri() .'/assets/svg/MapPointer.svg" class="pin-marker">';
+		echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/delmar_map.jpg" class="map-canvass">';
+	echo '</div>';
+
+	$rental_coordinates = get_post_meta( $meta_id->ID, 'rental_coordinates', true );
+	echo '<div class="rental_mapper">';
+
+		echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/delmar_map.jpg" width="800" class="pin" easypin-id="rental_map">';
+		echo '<marker style="display:none" class="drag"><img data-coor="'. $rental_coordinates. '" src="'. get_stylesheet_directory_uri() .'/assets/svg/MapPointer.svg" class="map-canvass"></marker>';
+
+		
+	echo '</div>'; //end rental_mapper
+
+
+	
+	echo '<input type="text" name="rental_coordinates" value="'. $rental_coordinates. '" data-value="'. $rental_coordinates. '" class="rental_coordinates" required>';
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	echo '<div class="unavailable-adder">';
+	echo '<h2 class="fullwidth additional-heading">Block Unavailable / Booked / Holiday Days</h2>';
+	$unavailable_rental_days = get_post_meta( $meta_id->ID, 'unavailable_rental_days', true );
+	echo '<input type="hidden" name="unavailable_rental_days" value="'.$unavailable_rental_days.'" data-blocked="'.$unavailable_rental_days.'">';
+	//echo '<input type="hidden" name="unavailable_rental_days" value="">';
+
+	echo '<h3>Blocked Days</h3>';
+	echo '<div class="display-unavailable"></div>';
+	echo '<h3>Select the date from the calendar below. Format: MM/DD/YYYY</h3><br />';
+	echo '<div class="form-group"><input type="text" name="unavailable_adder" value=""></div>';
+	echo '</div>';
 
 
 
@@ -559,6 +619,12 @@ function rental_meta_box_save_metabox( $post_id ) {
   if ( isset($_POST['property_text_community']) ) {        
     update_post_meta($post_id, 'property_text_community', $_POST['property_text_community']);      
   }
+
+  if ( isset($_POST['rental_coordinates']) ) {        
+    update_post_meta($post_id, 'rental_coordinates', $_POST['rental_coordinates']);      
+  }
+
+
   if ( isset($_POST['unavailable_rental_days']) ) {
 
   	//for easy access and viewing in the editor
