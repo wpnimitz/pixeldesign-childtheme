@@ -89,7 +89,7 @@ if($property_status == "new") {
 									</div>
 									<div class="five">
 										<span class="propertyNumber"><?php echo $property_powder_room ?></span>
-										<br>Powder Room<?php echo ($property_powder_room > 1) ? 's' : '' ?>
+										<br>Half Bath<?php echo ($property_powder_room > 1) ? 's' : '' ?>
 									</div>
 								</div>
 								<br>
