@@ -43,12 +43,13 @@ jQuery(document).ready(function( $ ) {
     });
 
      $(".rental_mapper img").on("click", function(){
-        var posX = $(this).offset().left, posY = $(this).offset().top;
+        var posX = $(this).position().left, posY = $(this).position().top;
 
-        
+
         var iW = $(".rental_mapper .pin").width();
         var iH = $(".rental_mapper .pin").height();
         $(".rental_coordinates").val( posX + ", " + posY + ", " + iW + ", " + iH);
+        $(".rental_mapper marker img").attr("data-coor",  posX + ", " + posY + ", " + iW + ", " + iH);
         renderMarker(".rental_mapper marker");
     })
 
