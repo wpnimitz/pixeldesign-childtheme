@@ -8,7 +8,7 @@ jQuery(document).ready(function( $ ) {
 
         $.each( keys, function( key, value ) {
           unavailable_dates.push(value);
-          $(".display-unavailable").append("<span>" + moment(value, "MM/DD/YYYY").format('MM/DD/YYYY') + "</span>");
+          //$(".display-unavailable").append("<span>" + moment(value, "MM/DD/YYYY").format('MM/DD/YYYY') + "</span>");
           //console.log(value);
         });
     }
@@ -67,6 +67,13 @@ jQuery(document).ready(function( $ ) {
 
     $("#rental-property-details-id").on('click', ".remove_bedroom", function(){
         $(this).closest(".main_bedroom_details").remove();
+    });
+
+    $(".capture_map").on("click", function(){
+        html2canvas(document.querySelector(".rental_mapper")).then(canvas => {
+            $(".rental_coordinates").val(canvas.toDataURL('image/jpeg'));
+            console.log(canvas.toDataURL('image/jpeg'));
+        });
     });
 
     

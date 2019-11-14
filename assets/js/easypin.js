@@ -3,39 +3,50 @@ jQuery(document).ready(function( $ ) {
     var mapCanvas = $(".mapper-defaults .map-canvas").attr("src");
 
 
-    $(".rental_mapper .pin").on("click", function(e){
-        var parentOffset = $(this).parent().offset();
-        console.log($(this).offset()); //if you really just want the current element's offset
-
-        var relX = e.pageX - parentOffset.left;
-        var relY = e.pageY - parentOffset.top; 
-
-        $(".rental_coordinates").val(relX + ", " + relY)
-    });
-
-    $(".rental_mapper marker").each(function( index ) {
-        var coor = $(this).find("img").data("coor");
+    function renderMarker(img) {
+        var coor = $(img).find("img").data("coor");
         var coord = coor.split(", ");
-        $(this).css("position", "absolute").css("left", coord[0] + "%").css("top", coord[1] + "%").css("width", "30px").show();
-        $(this).parent().css("position", "relative");
-    });
+        var $top = coord[0];
+        var $left = coord[1];
+
+        var initial_iW = coord[2];
+        var initial_iH = coord[3];
+
+        //lets get the actual image on user render
+        var rendered_image_width = $(".rental_mapper img").width();
+        var rendered_image_height = $(".rental_mapper img").height();
+
+        //gets get the difference from the original render to current image display
+        var res_percentage = rendered_image_width / initial_iW;
+        var res_marker = (30 / initial_iW) * rendered_image_width;
+
+        var newLeft = $top * res_percentage;
+        var newTop  = $left * res_percentage;
+
+        $(img).css("width", res_marker.toFixed(2) + "px").css("position", "absolute").css("left", newLeft.toFixed(2) + "px").css("top", newTop.toFixed(2) + "px").show();
+        $(img).parent().css("position", "relative");
+    }
+
+    if( $(".rental_mapper marker").length ) {
+        renderMarker(".rental_mapper marker");
+    }
 
     $(".rental_mapper .drag").draggable({
     	containment: "parent",
     	stop: function(e) {
     		var parentOffset = $(this).parent().offset();
-	        var relX = e.pageX - parentOffset.left + 15;
-        	var relY = e.pageY - parentOffset.top + 21;
         	var iW = $(".rental_mapper .pin").width();
         	var iH = $(".rental_mapper .pin").height();
 
 
-        	$(".rental_coordinates").val( ((relX / iW) * 100) + ", " + ((relY / iH) * 100));
-        	// Show dropped position.
 	        var Stoppos = $(this).position();
-	        console.log("STOP: \nLeft: "+ Stoppos.left + "\nTop: " + Stoppos.top);
-	        $(".rental_coordinates").val( ((Stoppos.left / iW) * 100) + ", " + ((Stoppos.top / iH) * 100));
+            //$(".rental_coordinates").val( ((Stoppos.left / iW) * 100) + ", " + ((Stoppos.top / iH) * 100) + ", " + iW + ", " + iH);
+	        $(".rental_coordinates").val( Stoppos.left + ", " + Stoppos.top + ", " + iW + ", " + iH);
   		}
+    });
+
+    $(window).on('resize', function(){
+        renderMarker(".rental_mapper marker");
     });
 
 });

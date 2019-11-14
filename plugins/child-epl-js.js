@@ -307,6 +307,19 @@ jQuery(document).ready(function( $ ) {
         });
     }
 
+    $("input[name=arrival]").val("Select Arrival Date");
+    $("input[name=departure]").val("Select Departure Date");
+
+
+    // $(".locButton").on("click", function() {
+    //     setTimeout(
+    //         function() {
+    //             $(".rental_mapper marker").removeClass("bounce").addClass("bounce");
+    //             console.log("bounced");
+    //         },
+    //         2000);
+    // })
+
 
 
 });

@@ -166,7 +166,7 @@ span.space {
 }
 
 
-span.add_more_bedroom {
+span.add_more_bedroom, span.capture_map {
     background: green;
     padding: 2px 5px;
     border-radius: 3px;
@@ -192,7 +192,7 @@ span.remove_bedroom {
     position: relative;
 }
 
-.rental_mapper img {
+.rental_mapper .pin {
     opacity: 1 !important;
     width: 100%;   
 }

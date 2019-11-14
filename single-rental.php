@@ -4,6 +4,9 @@ get_header();
 
 
 $slider_id = get_post_meta( get_the_ID(), 'property_assigned_slider', true);
+$allow_view_location = true;
+$allow_view_calendar = false;
+
 
 
 $divi_option = get_option("et_divi");
@@ -164,7 +167,15 @@ if($property_beds == "") {
 									</div>
 									
 								</div><br>
-								<div style="margin-top: 1.5em;clear:left;'"><a class="amenityButton locButton" href="#unique_overlay_menu_id_13643" id="overlay_unique_id_13643"	>View Location</a></div>
+								<div style="margin-top: 1.5em;clear:left;text-align:center;">
+									<?php if($allow_view_location) {?>
+									<a class="amenityButton locButton" href="#" id="overlay_unique_id_13643">View Location</a>
+									<?php } ?>
+
+									<?php if($allow_view_calendar) {?>
+									<a class="amenityButton view-calendar" href="#" id="overlay_unique_id_13820">View Calendar</a>
+									<?php } ?>
+								</div>
 							</div>
 
 							<!-- END: Property Grid layout asdf -->

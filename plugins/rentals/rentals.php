@@ -44,7 +44,8 @@ function rental_custom_post_type() {
 add_filter( 'manage_rental_posts_columns', 'set_custom_rental_blocked_days' );
 function set_custom_rental_blocked_days($columns) {
     unset( $columns['author'] );
-    $columns['blocked_days'] = __( 'Blocked Days', 'rental' );
+    $columns['rental_map'] = __( 'Has Map?', 'rental' );
+    $columns['vrp_approved'] = __( 'VRP Sync', 'rental' );
     $columns['rental_summary'] = __( 'Property Summary', 'rental' );
     return $columns;
 }
@@ -71,6 +72,26 @@ function custom_blocked_days( $column, $post_id ) {
 				}
         	}
         	echo '</div>';
+            break;
+        case 'rental_map' :
+        	$rental_map = get_post_meta( $post_id, 'rental_coordinates', true );
+        	
+        	if($rental_map != "") {
+        		echo "Yes";
+        	} else {
+        		echo "--";
+        	}
+
+            break;
+        case 'vrp_approved' :
+        	$vrp_assigned_id = get_post_meta( $post_id, 'vrp_assigned_id', true );
+        	
+        	if($vrp_assigned_id != "") {
+        		echo "<span class='price'>" .$vrp_assigned_id . "</span>";
+        	} else {
+        		echo "--";
+        	}
+
             break;
         case 'rental_summary' :
         	echo '<div class="rental-summary">';
@@ -224,6 +245,308 @@ function rental_filtered_data( $atts ){
 add_shortcode( 'rental_search_filters', 'rental_filtered_data' );
 
 
+function show_rental_marker() {
+	global $post;
+	$rental_coordinates = get_post_meta( $post->ID, 'rental_coordinates', true );
+	$ret = '<div class="rental_mapper">';
+
+		$ret .= '<img src="'. get_stylesheet_directory_uri() .'/assets/img/delmar_map.jpg" width="100%" class="pin" easypin-id="rental_map">';
+		$ret .= '<marker style="display:none"><img data-coor="'. $rental_coordinates. '" src="'. get_stylesheet_directory_uri() .'/assets/svg/MapPointer.svg" class="map-canvass"></marker>';
+
+		
+	$ret .= '</div>'; //end rental_mapper
+
+	return $ret;
+}
+add_shortcode( 'rental_marker', 'show_rental_marker' );
+
+
+function isDateAvailable($date) {
+	global $post;
+	//$rental_coordinates = get_post_meta( $post->ID, 'rental_coordinates', true );
+	$post_id = $post->ID;
+
+	global $wpdb;
+    $tablename = $wpdb->prefix.'rental_blocked_days';
+
+    //get blocked dates 
+    $blocked_date = date("Y-m-d", strtotime($date));
+	$results = $wpdb->get_results( "SELECT * FROM $tablename WHERE property_id = $post_id AND blocked_date = '$blocked_date'" );
+
+	if(count($results) >= 1) {
+		return 'unavailable';
+	} else {
+		return 'available';
+	}
+}
+
+
+/**
+ * Returns the calendar's html for the given year and month.
+ *
+ * @param $year (Integer) The year, e.g. 2015.
+ * @param $month (Integer) The month, e.g. 7.
+ * @param $events (Array) An array of events where the key is the day's date
+ * in the format "Y-m-d", the value is an array with 'text' and 'link'.
+ * @return (String) The calendar's html.
+ */
+function build_html_calendar($year, $month, $events = null) {
+	// CSS classes
+	$css_cal = 'calendar';
+	$css_cal_row = 'calendar-row';
+	$css_cal_day_head = 'calendar-day-head';
+	$css_cal_day = 'calendar-day';
+	$css_cal_day_number = 'day-number';
+	$css_cal_day_blank = 'calendar-day-np';
+	$css_cal_day_event = 'calendar-day-event';
+	$css_cal_event = 'calendar-event';
+	$running_week = 1;
+
+	// Table headings
+	$headings = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+
+	// Start: draw table
+	$calendar =
+	"<table cellpadding='0' cellspacing='0' class='{$css_cal}'>" .
+	"<tr class='{$css_cal_row}'>" .
+	"<td class='{$css_cal_day_head}'>" .
+	implode("</td><td class='{$css_cal_day_head}'>", $headings) .
+	"</td>" .
+	"</tr>";
+
+	// Days and weeks
+	$running_day = date('N', mktime(0, 0, 0, $month, 1, $year));
+	$days_in_month = date('t', mktime(0, 0, 0, $month, 1, $year));
+
+	// Row for week one
+	$calendar .= "<tr class='{$css_cal_row}'>";
+
+	// Print "blank" days until the first of the current week
+	for ($x = 1; $x < $running_day; $x++) {
+	$calendar .= "<td class='{$css_cal_day_blank}'><span></span></td>";
+	}
+
+	// Keep going with days...
+	for ($day = 1; $day <= $days_in_month; $day++) {
+
+	// Check if there is an event today
+	$cur_date = date('Y-m-d', mktime(0, 0, 0, $month, $day, $year));
+	$draw_event = false;
+	if (isset($events) && isset($events[$cur_date])) {
+		$draw_event = true;
+	}
+
+	//check if date is blocked
+	$cur_date = date('Y-m-d', mktime(0, 0, 0, $month, $day, $year));
+	$css_available = isDateAvailable($cur_date);
+
+	// Day cell
+	$calendar .= $draw_event ?
+		"<td class='{$css_cal_day} {$css_cal_day_event}'>" :
+		"<td class='{$css_cal_day} {$css_available}'>";
+
+	// Add the day number
+	$calendar .= "<div class='{$css_cal_day_number}'>" . $day . "</div>";
+
+	// Insert an event for this day
+	if ($draw_event) {
+		$calendar .=
+		"<div class='{$css_cal_event}'>" .
+		"<a href='{$events[$cur_date]['href']}'>" .
+		$events[$cur_date]['text'] .
+		"</a>" .
+		"</div>";
+	}
+
+	// Close day cell
+	$calendar .= "</td>";
+
+	// New row
+	if ($running_day == 7) {
+		$calendar .= "</tr>";
+		if (($day + 1) <= $days_in_month) {
+			$calendar .= "<tr class='{$css_cal_row}'>";
+		}
+		$running_day = 1;
+		$running_week++;
+	}
+
+	// Increment the running day
+	else {
+		$running_day++;
+	}
+
+
+	} // for $day
+
+	// Finish the rest of the days in the week
+	if ($running_day != 1) {
+		for ($x = $running_day; $x <= 7; $x++) {
+		  $calendar .= "<td class='{$css_cal_day_blank}'><div></div></td>";
+		}
+	}
+
+	// Final row
+	$calendar .= "</tr>";
+
+	// Adding new set of days
+	if ($running_week == 5) {
+		for ($x = 0; $x <= 6; $x++) {
+		  $calendar .= "<td class='{$css_cal_day_blank}'><div></div></td>";
+		}
+	}
+
+
+	// End the table
+	$calendar .= '</table>';
+
+
+	// All done, return result
+	return $calendar;
+}
+
+
+
+function show_rental_calendar() {
+	$ret = "";
+	$ret .= '<div class="legend">';
+	$ret .= '<span class="calendar-day unavailable"></span> - Unavailable';
+	$ret .= '<span class="calendar-day available"></span> - Available';
+	$ret .= '</div>';
+
+
+	$ret .= '<div class="show-calendar">';
+	for ($i=0; $i < 12; $i++) { 
+		$ret .= '<div class="month-calendar">';
+		$ret .= '<h2>'.date("F Y", strtotime("+$i month")).'</h2>';
+		$ret .= build_html_calendar(date("Y", strtotime("+$i month")), date("m", strtotime("+$i month")));
+		$ret .= '</div>';
+	}
+	$ret .= '</div>'; //show-calendar
+
+	
+
+	// $ret .= '<div class="show-calendar">';
+	// for ($i=3; $i < 12; $i++) { 
+	// 	$ret .= '<div class="month-calendar">';
+	// 	$ret .= '<h2>'.date("F Y", strtotime("+$i month")).'</h2>';
+	// 	$ret .= build_html_calendar(date("Y", strtotime("+$i month")), date("m", strtotime("+$i month")));
+	// 	$ret .= '</div>';
+	// }
+	// $ret .= '</div>'; //show-calendar
+
+
+
+	return $ret;
+}
+add_shortcode( 'rental_calendar', 'show_rental_calendar' );
+
+
+function iCalDecoder($file) {
+    $ical = file_get_contents($file);
+    preg_match_all('/(BEGIN:VEVENT.*?END:VEVENT)/si', $ical, $result, PREG_PATTERN_ORDER);
+    for ($i = 0; $i < count($result[0]); $i++) {
+        $tmpbyline = explode("\r\n", $result[0][$i]);
+
+        foreach ($tmpbyline as $item) {
+            $tmpholderarray = explode(":",$item);
+            if (count($tmpholderarray) >1) {
+                $majorarray[$tmpholderarray[0]] = $tmpholderarray[1];
+            }
+        }
+
+        if (preg_match('/DESCRIPTION:(.*)END:VEVENT/si', $result[0][$i], $regs)) {
+            $majorarray['DESCRIPTION'] = str_replace("  ", " ", str_replace("\r\n", "", $regs[1]));
+        }
+        $icalarray[] = $majorarray;
+        unset($majorarray);
+
+    }
+    return $icalarray;
+}
+
+function decodeiCal() {
+	$prop_id = $_GET["prop_id"];
+
+	$args = array(
+		'post_type'   => 'rental',
+		'posts_per_page' => '10',
+		'meta_query' => array(
+			array(
+				'key' => 'vrp_assigned_id',
+				'value'   => $prop_id,
+		        'compare' => '=',
+			)
+		)
+	);
+
+	$loop = new WP_Query( $args );
+	while ( $loop->have_posts() ) : $loop->the_post();
+	    $ids[] = get_the_ID();
+	endwhile;
+
+	$loc = get_stylesheet_directory() . '/plugins/rentals/booked/';
+	$ret = '';
+	if(count($ids)>0) {
+		foreach ($ids as $id => $value) {
+			$sync_id = get_post_meta($value, 'vrp_assigned_id', true);
+			$ret .=   get_the_title( $value );
+
+			//before doing anything, lets delete the existing database
+			deleteBlockedDay($value);
+
+
+			$events = iCalDecoder($loc . 'prop' . $sync_id . '.ics');
+			foreach($events as $event){
+			   	$start =  $event["DTSTART;VALUE=DATE"];
+			    $end =  $event["DTEND;VALUE=DATE"];
+			    $start_date = date('Y-m-d', strtotime($start));
+			    $end_date = date('Y-m-d', strtotime($end));
+
+			    if($start_date > $now){
+			        $ret .= '<br><div class="eventHolder">
+			                <div class="eventDate">'.$start_date.' - '.$end_date.'</div>
+			                <div class="eventTitle">'.$event['SUMMARY'].'</div>
+			            </div>';
+			    }
+
+
+			    if($event["SUMMARY"] == "Booked") {
+					$datediff = strtotime($end) - strtotime($start);
+
+					$days = round($datediff / (60 * 60 * 24));
+
+
+					//let's booked the days
+					$recorded = 0;
+				    for ($i=0; $i <= $days; $i++) { 
+				    	$date = date('Y-m-d', strtotime("+$i day", strtotime($start)));
+				    	$ret .= $date . "<br>";
+				    	insertBlockedDay($value, $date);
+				    	$recorded++;
+				    }
+				    $ret .= 'Total date saved to database: ' . $recorded . '<br>';
+			    }
+
+			}
+		}
+	} else {
+		$ret .= 'Sorry, we can\'t find that property ID/s. Make sure to add that on the correct rental property.';
+	}
+
+	$headers = array('Content-Type: text/html; charset=UTF-8');
+
+	wp_mail('wpnimitz@gmail.com', 'Your copy!', $ret, $headers);
+	return $ret;
+
+
+
+
+	
+}
+add_shortcode( 'rental_property_sync', 'decodeiCal' );
+
+
 function rental_assets() {
 	$version = strtotime("now");
     wp_enqueue_style( 'datepicker-style', 'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css?version=1.0.' . $version );
@@ -261,7 +584,7 @@ function rental_metabox_callback( $meta_id ) {
 	echo '<h3>VRP Assigned ID (Important)</h3>';
 	$vrp_assigned_id = get_post_meta( $meta_id->ID, 'vrp_assigned_id', true );
 
-	echo '<input type="number" step="1" name="vrp_assigned_id" value="'. $vrp_assigned_id. '" placeholder="VRP Assigned ID" required>';
+	echo '<input type="text" step="1" name="vrp_assigned_id" value="'. $vrp_assigned_id. '" placeholder="VRP Assigned ID" required>';
 
 	echo '<h3>Assign a Slider</h3>';
 	$property_assigned_slider = get_post_meta( $meta_id->ID, 'property_assigned_slider', true );
@@ -309,29 +632,29 @@ function rental_metabox_callback( $meta_id ) {
 
 	echo '<h3>Indoor Living Space in Sq. Ft.</h3>';
 	$property_indoor_space = get_post_meta( $meta_id->ID, 'property_indoor_space', true );
-	echo '<input type="number" step="1" name="property_indoor_space" placeholder="Enter indoor living space in sq. ft." value="'.  $property_indoor_space .'">';
+	echo '<input type="text" step="1" name="property_indoor_space" placeholder="Enter indoor living space in sq. ft." value="'.  $property_indoor_space .'">';
 
 	echo '<h3>Outdoor Living Space in Sq. Ft.</h3>';
 	$property_outdoor_space = get_post_meta( $meta_id->ID, 'property_outdoor_space', true );
-	echo '<input type="number" step="1" name="property_outdoor_space" placeholder="Enter outdoor living in sq. ft." value="'.  $property_outdoor_space .'">';
+	echo '<input type="text" step="1" name="property_outdoor_space" placeholder="Enter outdoor living in sq. ft." value="'.  $property_outdoor_space .'">';
 
 	
 	echo '<h3>Number of Bedrooms</h3>';
 	$property_bedrooms = get_post_meta( $meta_id->ID, 'property_bedrooms', true );
-	echo '<input type="number" step="1" name="property_bedrooms" placeholder="How many bedrooms?" value="'.  $property_bedrooms .'">';
+	echo '<input type="text" step="1" name="property_bedrooms" placeholder="How many bedrooms?" value="'.  $property_bedrooms .'">';
 
 	echo '<h3>Number of Beds</h3>';
 	$property_beds = get_post_meta( $meta_id->ID, 'property_beds', true );
-	echo '<input type="number" step="1" name="property_beds" placeholder="How many beds?" value="'.  $property_beds .'">';
+	echo '<input type="text" step="1" name="property_beds" placeholder="How many beds?" value="'.  $property_beds .'">';
 	
 
 	echo '<h3>Number of Bathrooms</h3>';
 	$property_bathrooms = get_post_meta( $meta_id->ID, 'property_bathrooms', true );
-	echo '<input type="number" step="1" name="property_bathrooms" placeholder="How many bathrooms?" value="'.  $property_bathrooms .'">';
+	echo '<input type="text" step="1" name="property_bathrooms" placeholder="How many bathrooms?" value="'.  $property_bathrooms .'">';
 
     echo '<h3>Number of Half Baths</h3>';
 	$property_powder_room = get_post_meta( $meta_id->ID, 'property_powder_room', true );
-	echo '<input type="number" step="1" name="property_powder_room" placeholder="How many half baths?" value="'.  $property_powder_room .'">';
+	echo '<input type="text" step="1" name="property_powder_room" placeholder="How many half baths?" value="'.  $property_powder_room .'">';
 
 	/** 
 	echo '<h3>Number of Garage Stalls</h3>';
@@ -347,13 +670,13 @@ function rental_metabox_callback( $meta_id ) {
 	echo '<div class="child-epl-options">';
 	echo '<h3>Min. Per Night Price</h3>';
 	$property_price = get_post_meta( $meta_id->ID, 'property_price', true );
-	echo '<input type="number" step="1" name="property_price" value="'.  $property_price .'">';
+	echo '<input type="text" step="1" name="property_price" value="'.  $property_price .'">';
 	echo '</div>';
 
 	echo '<div class="child-epl-options">';
 	echo '<h3>Max. Per Night Price</h3>';
 	$property_price_max = get_post_meta( $meta_id->ID, 'property_price_max', true );
-	echo '<input type="number" step="1" name="property_price_max" value="'.  $property_price_max .'">';
+	echo '<input type="text" step="1" name="property_price_max" value="'.  $property_price_max .'">';
 	echo '</div>';
 
 	echo '<h2 class="fullwidth additional-heading">Search Dropdown: Views</h2>';
@@ -479,7 +802,7 @@ function rental_metabox_callback( $meta_id ) {
 
 
 
-	echo '<h2 class="fullwidth additional-heading">Map Pin Mapper</h2>';
+	echo '<h2 class="fullwidth additional-heading">Map Pin Mapper <span class="capture_map">Capture</span></h2>';
 
 	echo '<div class="mapper-defaults" style="display:none;">';
 		echo '<img src="'. get_stylesheet_directory_uri() .'/assets/svg/MapPointer.svg" class="pin-marker">';
@@ -499,6 +822,7 @@ function rental_metabox_callback( $meta_id ) {
 	
 	echo '<input type="text" name="rental_coordinates" value="'. $rental_coordinates. '" data-value="'. $rental_coordinates. '" class="rental_coordinates" required>';
 
+	echo '<div id="rental_coordinates"></div>';
 
 
 	
@@ -533,10 +857,21 @@ function rental_metabox_callback( $meta_id ) {
 	//echo '<input type="hidden" name="unavailable_rental_days" value="">';
 
 	echo '<h3>Blocked Days</h3>';
-	echo '<div class="display-unavailable"></div>';
-	echo '<h3>Select the date from the calendar below. Format: MM/DD/YYYY</h3><br />';
-	echo '<div class="form-group"><input type="text" name="unavailable_adder" value=""></div>';
+	echo '<div class="display-unavailable">';
+
+	$blockedDays = getBlockedDay(get_the_ID());
+
+	foreach ($blockedDays as $blockedDay => $value) {
+		echo '<span>'.date("m/d/Y", strtotime($value->blocked_date)).'</span>';
+	}
+
+	print_r($ids);
+	count($ids);
+
 	echo '</div>';
+	// echo '<h3>Select the date from the calendar below. Format: MM/DD/YYYY</h3><br />';
+	// echo '<div class="form-group"><input type="text" name="unavailable_adder" value=""></div>';
+	echo '</div>'; //display-unavailable
 
 
 
@@ -630,29 +965,12 @@ function rental_meta_box_save_metabox( $post_id ) {
   	//for easy access and viewing in the editor
     update_post_meta($post_id, 'unavailable_rental_days', $_POST['unavailable_rental_days']);
 
-    
-
-    //for better availiability search function
-    global $wpdb;
-    $tablename = $wpdb->prefix.'rental_blocked_days';    
-    //delete all previous blocked dates first
-
-
-    //save all new blocked dates
     $blocked_days = explode(",", $_POST['unavailable_rental_days']);
     for ($i=0; $i < count($blocked_days); $i++) { 
-    	$date = str_replace("/", "_", $blocked_days[$i]);
-
-    	$wpdb->insert( 
-    		$tablename, 
-    		array(
-            	'property_id' => $post_id,
-            	'blocked_date' => date("Y-m-d", strtotime($blocked_days[$i])),
-            	'user_id' => get_current_user_id()
-        	)
-    	);
-    	$record_id = $wpdb->insert_id;
+    	$date = str_replace("/", "-", $blocked_days[$i]);
+    	insertBlockedDay($post_id, $date);
     }
+    
   }
   if ( isset($_POST['bedroom_label']) ) {        
     update_post_meta($post_id, 'bedroom_label', $_POST['bedroom_label']);      
@@ -663,3 +981,50 @@ function rental_meta_box_save_metabox( $post_id ) {
   }
 }
 add_action('save_post', 'rental_meta_box_save_metabox');
+
+function insertBlockedDay($post_id, $blocked_days) {
+    global $wpdb;
+    $tablename = $wpdb->prefix.'rental_blocked_days';
+
+    //save blocked dates
+	$wpdb->insert( 
+		$tablename, 
+		array(
+        	'property_id' => $post_id,
+        	'blocked_date' => date("Y-m-d", strtotime($blocked_days)),
+        	'user_id' => get_current_user_id()
+    	)
+	);
+	$record_id = $wpdb->insert_id;
+}
+
+function getBlockedDay($post_id) {
+    global $wpdb;
+    $tablename = $wpdb->prefix.'rental_blocked_days';
+
+    //get blocked dates
+	return $wpdb->get_results( "SELECT * FROM $tablename WHERE property_id = $post_id LIMIT 0,1000" );
+
+}
+
+function deleteBlockedDay($post_id, $date = false) {
+	global $wpdb;
+    $tablename = $wpdb->prefix.'rental_blocked_days';
+
+    if($date == false) {
+    	$wpdb->delete( 
+		$tablename, 
+			array(
+	        	'property_id' => $post_id
+	    	)
+		);
+    } else {
+    	$wpdb->delete( 
+		$tablename, 
+			array(
+	        	'property_id' => $post_id,
+	        	'blocked_date' => date("Y-m-d", strtotime($date)),
+	    	)
+		);
+    }
+}
