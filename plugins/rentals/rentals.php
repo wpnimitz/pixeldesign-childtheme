@@ -248,7 +248,10 @@ add_shortcode( 'rental_search_filters', 'rental_filtered_data' );
 function show_rental_marker() {
 	global $post;
 	$rental_coordinates = get_post_meta( $post->ID, 'rental_coordinates', true );
-	$ret = '<div class="rental_mapper">';
+
+	$ret = '<h3>Property Location</h3>';
+
+	$ret .= '<div class="rental_mapper">';
 
 		$ret .= '<img src="'. get_stylesheet_directory_uri() .'/assets/img/delmar_map.jpg" width="100%" class="pin" easypin-id="rental_map">';
 		$ret .= '<marker style="display:none"><img data-coor="'. $rental_coordinates. '" src="'. get_stylesheet_directory_uri() .'/assets/svg/MapPointer.svg" class="map-canvass"></marker>';
