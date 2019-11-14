@@ -802,7 +802,7 @@ function rental_metabox_callback( $meta_id ) {
 
 
 
-	echo '<h2 class="fullwidth additional-heading">Map Pin Mapper <span class="capture_map">Capture</span></h2>';
+	echo '<h2 class="fullwidth additional-heading">Map Pin Mapper</h2>';
 
 	echo '<div class="mapper-defaults" style="display:none;">';
 		echo '<img src="'. get_stylesheet_directory_uri() .'/assets/svg/MapPointer.svg" class="pin-marker">';
