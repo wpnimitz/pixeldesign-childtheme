@@ -41,20 +41,6 @@ jQuery(document).ready(function( $ ) {
 	        $(".rental_coordinates").val( Stoppos.left + ", " + Stoppos.top + ", " + iW + ", " + iH);
   		}
     });
-
-     $(".rental_mapper img").on("click", function(){
-        var posX = $(this).position().left, posY = $(this).position().top;
-
-
-        var iW = $(".rental_mapper .pin").width();
-        var iH = $(".rental_mapper .pin").height();
-        $(".rental_coordinates").val( posX + ", " + posY + ", " + iW + ", " + iH);
-        $(".rental_mapper marker img").attr("data-coor",  posX + ", " + posY + ", " + iW + ", " + iH);
-        renderMarker(".rental_mapper marker");
-    })
-
-
-
     $(window).on('resize', function(){
         renderMarker(".rental_mapper marker");
     });
