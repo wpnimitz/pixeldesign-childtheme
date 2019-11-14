@@ -817,7 +817,7 @@ function rental_metabox_callback( $meta_id ) {
 	echo '<div class="rental_mapper">';
 
 		echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/delmar_map.jpg" width="800" class="pin" easypin-id="rental_map">';
-		echo '<marker style="display:none" class="drag"><img data-coor="'. $rental_coordinates. '" src="'. get_stylesheet_directory_uri() .'/assets/svg/MapPointer.svg" class="map-canvass"></marker>';
+		echo '<marker style="position: absolute; top: 30px; left: 30px; width: 30px;" class="drag"><img data-coor="'. $rental_coordinates. '" src="'. get_stylesheet_directory_uri() .'/assets/svg/MapPointer.svg" class="map-canvass"></marker>';
 
 		
 	echo '</div>'; //end rental_mapper
