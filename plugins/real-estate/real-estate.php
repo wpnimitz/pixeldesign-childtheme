@@ -187,9 +187,9 @@ function cepl_meta_box_callback( $meta_id ) {
 	$property_bathrooms = get_post_meta( $meta_id->ID, 'property_bathrooms', true );
 	echo '<input type="number" step="1" name="property_bathrooms" placeholder="How many bathrooms?" value="'.  $property_bathrooms .'">';
 
-    echo '<h3>Powder Rooms</h3>';
+    echo '<h3>Half-baths</h3>';
 	$property_powder_room = get_post_meta( $meta_id->ID, 'property_powder_room', true );
-	echo '<input type="number" step="1" name="property_powder_room" placeholder="How many powder-rooms?" value="'.  $property_powder_room .'">';
+	echo '<input type="number" step="1" name="property_powder_room" placeholder="How many half-baths?" value="'.  $property_powder_room .'">';
 
 	echo '<h3>Garage Stalls</h3>';
 	$property_garage_stalls = get_post_meta( $meta_id->ID, 'property_garage_stalls', true );
