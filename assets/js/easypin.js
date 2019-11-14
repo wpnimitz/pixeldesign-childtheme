@@ -37,19 +37,18 @@ jQuery(document).ready(function( $ ) {
     		var parentOffset = $(this).parent().offset();
         	var iW = $(".rental_mapper .pin").width();
         	var iH = $(".rental_mapper .pin").height();
-
-
 	        var Stoppos = $(this).position();
-            //$(".rental_coordinates").val( ((Stoppos.left / iW) * 100) + ", " + ((Stoppos.top / iH) * 100) + ", " + iW + ", " + iH);
 	        $(".rental_coordinates").val( Stoppos.left + ", " + Stoppos.top + ", " + iW + ", " + iH);
   		}
     });
 
      $(".rental_mapper img").on("click", function(){
-        var Stoppos = $(this).position();
+        var posX = $(this).offset().left, posY = $(this).offset().top;
+
+        
         var iW = $(".rental_mapper .pin").width();
         var iH = $(".rental_mapper .pin").height();
-        $(".rental_coordinates").val( Stoppos.left + ", " + Stoppos.top + ", " + iW + ", " + iH);
+        $(".rental_coordinates").val( posX + ", " + posY + ", " + iW + ", " + iH);
         renderMarker(".rental_mapper marker");
     })
 
