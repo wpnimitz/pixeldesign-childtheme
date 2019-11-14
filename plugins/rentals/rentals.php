@@ -249,7 +249,7 @@ function show_rental_marker() {
 	global $post;
 	$rental_coordinates = get_post_meta( $post->ID, 'rental_coordinates', true );
 
-	$ret = '<h3>Property Location</h3>';
+	$ret = '<h3>Property '.get_the_title().' Location</h3>';
 
 	$ret .= '<div class="rental_mapper">';
 
