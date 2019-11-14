@@ -581,10 +581,10 @@ function rental_metabox_callback( $meta_id ) {
 	echo '<h2 class="fullwidth">Property Information</h2>';
 
 	echo '<div class="child-epl-options">';
-	echo '<h3>VRP Assigned ID (Important)</h3>';
-	$vrp_assigned_id = get_post_meta( $meta_id->ID, 'vrp_assigned_id', true );
+	// echo '<h3>VRP Assigned ID (Important)</h3>';
+	// $vrp_assigned_id = get_post_meta( $meta_id->ID, 'vrp_assigned_id', true );
 
-	echo '<input type="text" step="1" name="vrp_assigned_id" value="'. $vrp_assigned_id. '" placeholder="VRP Assigned ID" required>';
+	// echo '<input type="text" step="1" name="vrp_assigned_id" value="'. $vrp_assigned_id. '" placeholder="VRP Assigned ID" required>';
 
 	echo '<h3>Assign a Slider</h3>';
 	$property_assigned_slider = get_post_meta( $meta_id->ID, 'property_assigned_slider', true );
@@ -810,6 +810,10 @@ function rental_metabox_callback( $meta_id ) {
 	echo '</div>';
 
 	$rental_coordinates = get_post_meta( $meta_id->ID, 'rental_coordinates', true );
+
+	if($rental_coordinates == "") {
+		$rental_coordinates = "30, 30";
+	}
 	echo '<div class="rental_mapper">';
 
 		echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/delmar_map.jpg" width="800" class="pin" easypin-id="rental_map">';
