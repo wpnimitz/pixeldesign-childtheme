@@ -45,6 +45,16 @@ jQuery(document).ready(function( $ ) {
   		}
     });
 
+     $(".rental_mapper img").on("click", function(){
+        var Stoppos = $(this).position();
+        var iW = $(".rental_mapper .pin").width();
+        var iH = $(".rental_mapper .pin").height();
+        $(".rental_coordinates").val( Stoppos.left + ", " + Stoppos.top + ", " + iW + ", " + iH);
+        renderMarker(".rental_mapper marker");
+    })
+
+
+
     $(window).on('resize', function(){
         renderMarker(".rental_mapper marker");
     });

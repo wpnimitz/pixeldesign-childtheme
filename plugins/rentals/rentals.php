@@ -45,7 +45,7 @@ add_filter( 'manage_rental_posts_columns', 'set_custom_rental_blocked_days' );
 function set_custom_rental_blocked_days($columns) {
     unset( $columns['author'] );
     $columns['rental_map'] = __( 'Has Map?', 'rental' );
-    $columns['vrp_approved'] = __( 'VRP Sync', 'rental' );
+    //$columns['vrp_approved'] = __( 'VRP Sync', 'rental' );
     $columns['rental_summary'] = __( 'Property Summary', 'rental' );
     return $columns;
 }
