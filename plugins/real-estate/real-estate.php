@@ -277,6 +277,38 @@ function cepl_meta_box_callback( $meta_id ) {
         	)
     );
 	echo '</div>';
+
+
+
+
+
+	echo '<h2 class="fullwidth additional-heading">Map Pin Mapper</h2>';
+
+	echo '<div class="mapper-defaults" style="display:none;">';
+		echo '<img src="'. get_stylesheet_directory_uri() .'/assets/svg/MapPointer.svg" class="pin-marker">';
+		echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/delmar_map.jpg" class="map-canvass">';
+	echo '</div>';
+
+	$rental_coordinates = get_post_meta( $meta_id->ID, 'rental_coordinates', true );
+
+	if($rental_coordinates == "") {
+		$rental_coordinates = "30, 30";
+	}
+	echo '<div class="rental_mapper">';
+
+		echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/delmar_map.jpg" width="800" class="pin" easypin-id="rental_map">';
+		echo '<marker style="position: absolute; top: 30px; left: 30px; width: 30px;" class="drag"><img data-coor="'. $rental_coordinates. '" src="'. get_stylesheet_directory_uri() .'/assets/svg/MapPointer.svg" class="map-canvass"></marker>';
+
+		
+	echo '</div>'; //end rental_mapper
+
+
+	
+	echo '<input type="text" name="rental_coordinates" value="'. $rental_coordinates. '" data-value="'. $rental_coordinates. '" class="rental_coordinates" required>';
+
+	echo '<div id="rental_coordinates"></div>';
+
+
 	echo '</div>'; //delmar property details
 
 
@@ -346,6 +378,9 @@ function cepl_meta_box_save_meta( $post_id ) {
   }
   if ( isset($_POST['property_text_community']) ) {        
     update_post_meta($post_id, 'property_text_community', $_POST['property_text_community']);      
+  }
+  if ( isset($_POST['rental_coordinates']) ) {        
+    update_post_meta($post_id, 'rental_coordinates', $_POST['rental_coordinates']);      
   }
 
 }
