@@ -38,6 +38,43 @@ function real_estate_custom_post_type() {
 	register_post_type( 'property', $args );
 }
 
+// Add the custom columns to the book post type:
+add_filter( 'manage_property_posts_columns', 'set_custom_columns_properties' );
+function set_custom_columns_properties($columns) {
+    unset( $columns['author'] );
+    $columns['rental_map'] = __( 'Has Map?', 'property' );
+    //$columns['vrp_approved'] = __( 'VRP Sync', 'property' );
+    //$columns['rental_summary'] = __( 'Property Summary', 'property' );
+    return $columns;
+}
+
+// Add the data to the custom columns for the book post type:
+add_action( 'manage_property_posts_custom_column' , 'set_custom_columns_properties_render', 10, 2 );
+function set_custom_columns_properties_render( $column, $post_id ) {
+    switch ( $column ) {
+        case 'rental_map' :
+        	$rental_map = get_post_meta( $post_id, 'rental_coordinates', true );
+        	
+        	if($rental_map != "") {
+        		echo "Yes";
+        	} else {
+        		echo "--";
+        	}
+
+            break;
+        case 'vrp_approved' :
+        	$vrp_assigned_id = get_post_meta( $post_id, 'vrp_assigned_id', true );
+        	
+        	if($vrp_assigned_id != "") {
+        		echo "<span class='price'>" .$vrp_assigned_id . "</span>";
+        	} else {
+        		echo "--";
+        	}
+
+            break;
+    }
+}
+
 
 
 //create a custom taxonomy name it property type for your properties 
