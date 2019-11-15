@@ -90,7 +90,7 @@ function get_delmar_properties( $atts ){
 	$ret .= '</div>';
 	$ret .= '<div class="loadmore button"><a href="#" class="properties_loadmore amenityButton" data-post-type="'. $type .'" data-current-page="1" data-max-page="'.$loop->max_num_pages.'" data-search-filter="false">Load More</a></div>';
 	$ret .= '<div class="loadmore spinner">
-			<div class="loading" style="display:none;"><img src="'. get_stylesheet_directory_uri() .'/assets/img/spin.png"> <span class="message">Loading more properties...<span></div>
+			<div class="loading" style="display:none;"><img src="'. get_stylesheet_directory_uri() .'/assets/img/spin.png"> <span class="message">Loading more properties...</span></div>
 		</div>';
 	return $ret;
 
