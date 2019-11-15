@@ -140,10 +140,10 @@ function easy_property_blurb_extra($post_id, $type = "property") {
 
 				
 				if($type == 'property') {
-					$ret .= '<h4 class="et_pb_module_header"><span class"prop-title">' . $prop_title . '</span> <span class="line"></span> <span class="prop-price">$' . number_format($prop_price) .  '</span>
+					$ret .= '<h4 class="et_pb_module_header"><span class="prop-title">' . $prop_title . '</span> <span class="line"></span> <span class="prop-price">$' . number_format($prop_price) .  '</span>
 						</h4>';
 				} else {
-					$ret .= '<h4 class="et_pb_module_header"><span class"prop-title">' . $prop_title . '</span></h4>';
+					$ret .= '<h4 class="et_pb_module_header"><span class="prop-title">' . $prop_title . '</span></h4>';
 				}
 
 
