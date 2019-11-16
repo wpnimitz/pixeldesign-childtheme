@@ -58,6 +58,7 @@ jQuery(document).ready(function( $ ) {
             .css("max-width", "initial")
             .css("width", $rmImg.width() - ($rmImg.width() / 5))
         }
+        renderMarker(".rental_mapper marker");
     })
 
 });
