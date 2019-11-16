@@ -356,6 +356,7 @@ select::-ms-expand {
 .property-list {
     display: flex;
     flex-wrap: wrap;
+    max-width: 98%;
 }
 
 .property-list .blurb-extra {
