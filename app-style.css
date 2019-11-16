@@ -359,8 +359,8 @@ select::-ms-expand {
 }
 
 .property-list .blurb-extra {
-    width: calc(50% - 20px);
-    margin: 10px;
+    width: calc(100% - 8px);
+    margin: 4px;
     padding: 10px;
 }
 
@@ -812,8 +812,8 @@ form.easy-property-search-filters select {
 
 @media screen and (max-width: 980px) {
     .property-list .blurb-extra {
-        width: calc(100% - 20px);
-        margin: 10px;
+        width: calc(100% - 8px);
+        margin: 4px;
         padding: 10px;
     }
     .property-map.et_pb_section .rental_mapper {
