@@ -783,6 +783,33 @@ form.easy-property-search-filters select {
     color: #fff;
 }
 
+
+.property-map.et_pb_section .rental_mapper {
+    min-height: 45vh!important;
+    overflow: auto;
+    max-height: 45vh!important;
+}
+.property-map h3 {
+    font-size: 30px;
+    text-align: center;
+    padding: 0.8em 0;
+}
+.rm_controller {
+    padding: 30px;
+    text-align: center;
+}
+.rm_controller span {
+    width: 30px;
+    display: inline-block;
+    background: #dab47a;
+    text-align: center;
+}
+.rm_controller span:hover {
+    background: #f4edd0;
+}
+
+
+
 .bounce {
   animation-name: bounce;
   animation-fill-mode: both;
@@ -814,30 +841,6 @@ form.easy-property-search-filters select {
         width: calc(100% - 20px);
         margin: 10px;
         padding: 10px;
-    }
-
-    .property-map.et_pb_section .rental_mapper {
-        min-height: 45vh!important;
-        overflow: auto;
-        max-height: 45vh!important;
-    }
-    .property-map h3 {
-        font-size: 30px;
-        text-align: center;
-        padding: 0.8em 0;
-    }
-    .rm_controller {
-        padding: 30px;
-        text-align: center;
-    }
-    .rm_controller span {
-        width: 30px;
-        display: inline-block;
-        background: #dab47a;
-        text-align: center;
-    }
-    .rm_controller span:hover {
-        background: #f4edd0;
     }
 }
 
