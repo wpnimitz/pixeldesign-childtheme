@@ -815,6 +815,31 @@ form.easy-property-search-filters select {
         margin: 10px;
         padding: 10px;
     }
+
+    .property-map.et_pb_section .rental_mapper {
+        min-height: 65vh!important;
+        overflow: auto;
+        max-height: 65vh!important;
+    }
+    .property-map h3 {
+        font-size: 30px;
+        text-align: center;
+        padding: 0.8em 0;
+    }
+    .rm_controller {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+    }
+    .rm_controller span {
+        width: 30px;
+        display: inline-block;
+        background: #dab47a;
+        text-align: center;
+    }
+    .rm_controller span:hover {
+        background: #f4edd0;
+    }
 }
 
 
