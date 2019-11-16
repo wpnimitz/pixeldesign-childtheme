@@ -259,6 +259,7 @@ function show_rental_marker() {
 		
 	$ret .= '</div>'; //end rental_mapper
 
+
 	$ret .= '<div class="rm_controller"><span class="in">+</span><span class="out">-</span></div>';
 
 	return $ret;
