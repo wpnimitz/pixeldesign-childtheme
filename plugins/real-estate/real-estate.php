@@ -515,7 +515,7 @@ function get_easy_property_search_filters( $atts ){
 	$ret .= '<option value="2500000">$2,500,000</option>';
 	$ret .= '<option value="5000000">$5,000,000</option>';
 	$ret .= '<option value="10000000">$10,000,000</option>';
-	$ret .= '<option value="2000000000">$20,000,000+</option>';
+	$ret .= '<option value="2000000000" selected>$20,000,000+</option>';
 	$ret .= '</select>';
 	$ret .= '</div>';
 
