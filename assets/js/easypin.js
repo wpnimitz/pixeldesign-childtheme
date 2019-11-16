@@ -45,4 +45,19 @@ jQuery(document).ready(function( $ ) {
         renderMarker(".rental_mapper marker");
     });
 
+    $(".rm_controller span").on("click", function(){
+        $this = $(this).html();
+        $rmImg = $(".rental_mapper > img");
+
+        if($this == "+") {
+            $rmImg
+            .css("max-width", "initial")
+            .css("width", $rmImg.width() * 1.25)
+        } else {
+            $rmImg
+            .css("max-width", "initial")
+            .css("width", $rmImg.width() - ($rmImg.width() / 5))
+        }
+    })
+
 });
