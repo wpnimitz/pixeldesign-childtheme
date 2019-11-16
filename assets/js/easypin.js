@@ -47,16 +47,23 @@ jQuery(document).ready(function( $ ) {
 
     $(".rm_controller span").on("click", function(){
         $this = $(this).html();
-        $rmImg = $(".rental_mapper > img");
+        $rmImg = $(".rental_mapper img");
 
-        if($this == "+") {
+        var maxPress = 0;
+
+        
+
+        if($this == "+" && maxPress != 5) {
             $rmImg
             .css("max-width", "initial")
             .css("width", $rmImg.width() * 1.25)
+
+            maxPress++;
         } else {
             $rmImg
             .css("max-width", "initial")
             .css("width", $rmImg.width() - ($rmImg.width() / 5))
+            maxPress = maxPress - 1;
         }
         renderMarker(".rental_mapper marker");
     })
