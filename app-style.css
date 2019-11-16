@@ -530,6 +530,10 @@ select::-ms-expand {
     margin-right: 20px; 
 }
 
+.rm_controller {
+    display: none;
+}
+
 @keyframes spin {
     from {
         transform:rotate(0deg);
@@ -829,14 +833,19 @@ form.easy-property-search-filters select {
         padding: 0.8em 0;
     }
     .rm_controller {
+        display: block;
         padding: 30px;
         text-align: center;
     }
     .rm_controller span {
-        width: 30px;
+        width: 60px;
         display: inline-block;
         background: #dab47a;
         text-align: center;
+        color: #fff;
+        font-size: 30px;
+        padding: 5px;
+        border: 1px solid #fff;
     }
     .rm_controller span:hover {
         background: #f4edd0;

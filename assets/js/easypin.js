@@ -45,18 +45,17 @@ jQuery(document).ready(function( $ ) {
         renderMarker(".rental_mapper marker");
     });
 
+    var maxPress = 0;   
     $(".rm_controller span").on("click", function(){
         $this = $(this).html();
-        $rmImg = $(".rental_mapper > img");
-
-        var maxPress = 0;        
+        $rmImg = $(".rental_mapper > img");            
 
         if($this == "+" && maxPress <= 5) {
             $rmImg
             .css("max-width", "initial")
-            .css("width", $rmImg.width() * 1.25)
+            .css("width", $rmImg.width() * 1.2)
 
-            maxPress++;
+            maxPress;
         } else {
             $rmImg
             .css("max-width", "initial")
