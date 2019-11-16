@@ -57,10 +57,12 @@ jQuery(document).ready(function( $ ) {
 
             maxPress++;
         } else {
-            $rmImg
-            .css("max-width", "initial")
-            .css("width", $rmImg.width() - ($rmImg.width() / 5))
-            maxPress = maxPress - 1;
+            if(maxPress >= 0) {
+                $rmImg
+                .css("max-width", "initial")
+                .css("width", $rmImg.width() - ($rmImg.width() / 5))
+                maxPress = maxPress - 1;
+            }
         }
         renderMarker(".rental_mapper marker");
         console.log(maxPress);
