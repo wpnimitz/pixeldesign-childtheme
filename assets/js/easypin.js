@@ -51,7 +51,7 @@ jQuery(document).ready(function( $ ) {
 
         var maxPress = 0;        
 
-        if($this == "+" && maxPress != 5) {
+        if($this == "+" && maxPress <= 5) {
             $rmImg
             .css("max-width", "initial")
             .css("width", $rmImg.width() * 1.25)
@@ -64,6 +64,7 @@ jQuery(document).ready(function( $ ) {
             maxPress = maxPress - 1;
         }
         renderMarker(".rental_mapper marker");
+        console.log(maxPress);
     })
 
 });
