@@ -55,7 +55,7 @@ jQuery(document).ready(function( $ ) {
             .css("max-width", "initial")
             .css("width", $rmImg.width() * 1.2)
 
-            maxPress;
+            maxPress++;
         } else {
             $rmImg
             .css("max-width", "initial")
