@@ -47,11 +47,9 @@ jQuery(document).ready(function( $ ) {
 
     $(".rm_controller span").on("click", function(){
         $this = $(this).html();
-        $rmImg = $(".rental_mapper img");
+        $rmImg = $(".rental_mapper > img");
 
-        var maxPress = 0;
-
-        
+        var maxPress = 0;        
 
         if($this == "+" && maxPress != 5) {
             $rmImg
