@@ -4,8 +4,10 @@ function delmar_assets() {
     //wp_enqueue_script( 'js-mobile', 'http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js', array(), $version );
     wp_enqueue_script( 'js-cookie', 'https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js', array(), $version );
     wp_enqueue_script( 'child-epl-js', get_stylesheet_directory_uri() . '/plugins/child-epl-js.js?version=1.0.' . $version, array(), $version );
+    wp_enqueue_style( 'font-awesome', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), $version );
     wp_enqueue_script( 'jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', array(), $version );
     wp_enqueue_script( 'easy-pin', get_stylesheet_directory_uri() . '/assets/js/easypin.js', array(), $version );
+    
     wp_localize_script( 'child-epl-js', 'get_property_search', array(
     	'ajaxurl' => admin_url( 'admin-ajax.php' ),
 	) );	
