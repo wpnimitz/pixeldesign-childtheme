@@ -397,3 +397,10 @@ function get_availiability_search() {
 
 add_action( 'wp_ajax_get_availiability_search', 'get_availiability_search' );
 add_action( 'wp_ajax_nopriv_get_availiability_search', 'get_availiability_search' );
+
+
+
+function property_title_callback() {
+	return get_the_title();
+}
+add_shortcode( 'property_title', 'property_title_callback' );
