@@ -63,8 +63,10 @@ function get_delmar_properties( $atts ){
 	$atts = shortcode_atts(
 		array(
 			'type' => 'property',
+			'community' => '',
 		), $atts );
 	$type = $atts["type"];
+	$community = $atts["community"];
 
 	$args = array(
 	  'post_type'   => $type,
@@ -80,7 +82,17 @@ function get_delmar_properties( $atts ){
 		$args['order'] = 'DESC';
 	}
 
-	$ret .= '<div class="property-list-message"></div>';
+	if($type == "property" && !empty($community)) {
+		$args['tax_query'][] = array (
+            'taxonomy' => 'property-communities',
+            'terms' => 'term_id',
+        )
+	}
+	if(empty($community)) {
+		$community = "none";
+	}
+
+	$ret .= '<div class="property-list-message community-'$community'"></div>';
 	$ret .= '<div class="property-list">';
 
 	$loop = new WP_Query( $args );
