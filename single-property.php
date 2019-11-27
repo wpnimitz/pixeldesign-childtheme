@@ -87,7 +87,7 @@ $property_fully_furnished = get_post_meta( get_the_ID(), 'property_fully_furnish
 									<?php if($property_fully_furnished != "Lot Only") { ?>
 									<div class="one">
 										<span class="propertyNumber"><?php echo number_format($property_indoor_space) ?></span>
-										<br>Sq Ft Indoor Living Space
+										<br>Sq Ft Indoor Living Space 
 									</div>								
 									<div class="two">
 										<span class="propertyNumber"><?php echo $property_bedrooms ?></span>
@@ -106,7 +106,7 @@ $property_fully_furnished = get_post_meta( get_the_ID(), 'property_fully_furnish
 										<br>Half Bath<?php echo ($property_powder_room > 1) ? 's' : '' ?>
 									</div>
 									<?php } ?>
-									
+
 									<?php if($property_fully_furnished == "Lot Only") { ?>
 									<div class="one">
 										<span class="propertyNumber"><?php echo number_format($lot_only_area) ?></span>
