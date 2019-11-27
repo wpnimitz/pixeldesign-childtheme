@@ -44,11 +44,6 @@ $property_text_features =  get_post_meta( get_the_ID(), 'property_text_features'
 $property_text_community =  get_post_meta( get_the_ID(), 'property_text_community', true);
 
 $property_status = get_post_meta( get_the_ID(), 'property_status', true);
-if($property_status == "new") {
-	$property_status_text = "Fully Furnished";
-} else {
-	$property_status_text = "";
-}
 
 ?>
 
@@ -62,8 +57,27 @@ if($property_status == "new") {
 						<div class="et_pb_row">
 							<div class="et_pb_column et_pb_column_2_3">
 								<h1 class="line"><?php echo $property_title ?></h1>
-								<h3>$<?php echo number_format($property_price) ?>
-									<span class="priceDetail"> <?php echo $property_status_text; ?></span>
+								<h3>	
+
+									<?php 
+
+									if($property_price > 0) {
+										echo '$'. number_format($property_price);
+									} else {
+										echo 'Price Available Upon Request';
+									}
+
+
+									<?php 
+
+									if($property_fully_furnished == "Fully Furnished") {
+										echo '<span class="priceDetail">Fully Furnished</span>';
+									}
+									if($property_fully_furnished == "Lot Only") {
+										echo '<span class="priceDetail">Lot Only</span>';
+									}
+
+									?>
 								</h3>
 								<div class="property-description">
 									<?php echo $property_description; ?>
