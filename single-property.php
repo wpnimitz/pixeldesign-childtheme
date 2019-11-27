@@ -67,9 +67,6 @@ $property_status = get_post_meta( get_the_ID(), 'property_status', true);
 										echo 'Price Available Upon Request';
 									}
 
-
-									<?php 
-
 									if($property_fully_furnished == "Fully Furnished") {
 										echo '<span class="priceDetail">Fully Furnished</span>';
 									}
