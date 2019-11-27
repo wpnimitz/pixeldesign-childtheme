@@ -636,7 +636,7 @@ function rental_metabox_callback( $meta_id ) {
 
 
 
-	echo '<h3>Indoor Living Space in Sq. Ft.</h3>';
+	echo '<h3>Indoor Living Space in Sq. Ft.</h3>'; 
 	$property_indoor_space = get_post_meta( $meta_id->ID, 'property_indoor_space', true );
 	echo '<input type="text" step="1" name="property_indoor_space" placeholder="Enter indoor living space in sq. ft." value="'.  $property_indoor_space .'">';
 
