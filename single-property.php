@@ -94,7 +94,7 @@ $property_fully_furnished = get_post_meta( get_the_ID(), 'property_fully_furnish
 										<br>Bedroom<?php echo ($property_bedrooms > 1) ? 's' : '' ?>
 									</div>
 									<div class="three">
-										<span class="propertyNumber"><?php echo $property_garage_stalls ?></span>
+										<span class="propertyNumber"><?php echo ($property_garage_stalls>0) ? $property_garage_stalls : '&mdash;' ?></span>
 										<br>Garage Stall<?php echo ($property_garage_stalls > 1) ? 's' : '' ?>
 									</div>
 									<div class="four">
@@ -102,7 +102,7 @@ $property_fully_furnished = get_post_meta( get_the_ID(), 'property_fully_furnish
 										<br>Bathroom<?php echo ($property_bathrooms > 1) ? 's' : '' ?>
 									</div>
 									<div class="five">
-										<span class="propertyNumber"><?php echo $property_powder_room ?></span>
+										<span class="propertyNumber"><?php echo ($property_powder_room>0) ? $property_powder_room : '&mdash;' ?></span>
 										<br>Half Bath<?php echo ($property_powder_room > 1) ? 's' : '' ?>
 									</div>
 									<?php } ?>

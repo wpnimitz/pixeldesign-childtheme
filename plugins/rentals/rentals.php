@@ -181,19 +181,20 @@ function rental_filtered_data( $atts ){
 	$ret = '<div class="property-search-wrapper">';
 	$ret .= '<form class="property-search-filters">';
 	$ret .= '<input name="post_type" value="rental" type="hidden">';
-	$ret .= '<div class="et_pb_row visible">';
+	
+	// $ret .= '<div class="et_pb_row visible">';
 
-	$ret .= '<div class="et_pb_column et_pb_column_1_2">';
-	$ret .= '<label>Arrival</label>';
-	$ret .= '<input type="text" name="arrival" class="arrival_selector">';
-	$ret .= '</div>';
+	// $ret .= '<div class="et_pb_column et_pb_column_1_2">';
+	// $ret .= '<label>Arrival</label>';
+	// $ret .= '<input type="text" name="arrival" class="arrival_selector">';
+	// $ret .= '</div>';
 
-	$ret .= '<div class="et_pb_column et_pb_column_1_2">';
-	$ret .= '<label>Departure</label>';
-	$ret .= '<input type="text" name="departure" class="departure_selector">';
-	$ret .= '</div>';
+	// $ret .= '<div class="et_pb_column et_pb_column_1_2">';
+	// $ret .= '<label>Departure</label>';
+	// $ret .= '<input type="text" name="departure" class="departure_selector">';
+	// $ret .= '</div>';
 
-	$ret .= '</div>';//et_pb_row
+	// $ret .= '</div>';//et_pb_row
 
 	$ret .= '<div class="et_pb_row visible">';
 

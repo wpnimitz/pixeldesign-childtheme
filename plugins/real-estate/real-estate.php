@@ -251,7 +251,7 @@ function cepl_meta_box_callback( $meta_id ) {
 	echo '<div class="child-epl-options">';
 	echo '<h3>Property Price</h3>';
 	$property_price = get_post_meta( $meta_id->ID, 'property_price', true );
-	echo '<input type="number" step="1" name="property_price" value="'.  $property_price .'">';
+	echo '<input type="text" step="1" name="property_price" value="'.  $property_price .'">';
 	echo '</div>';
 	
 
