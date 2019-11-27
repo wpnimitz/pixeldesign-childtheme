@@ -43,7 +43,7 @@ $property_garage_stalls =  get_post_meta( get_the_ID(), 'property_garage_stalls'
 $property_text_features =  get_post_meta( get_the_ID(), 'property_text_features', true);
 $property_text_community =  get_post_meta( get_the_ID(), 'property_text_community', true);
 
-$property_status = get_post_meta( get_the_ID(), 'property_status', true);
+$property_fully_furnished = get_post_meta( get_the_ID(), 'property_fully_furnished', true);
 
 ?>
 
