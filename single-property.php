@@ -35,7 +35,7 @@ if( empty($property_description) ) {
 }
 
 $property_indoor_space =  get_post_meta( get_the_ID(), 'property_indoor_space', true);
-$property_indoor_space =  get_post_meta( get_the_ID(), 'lot_only_area', true);
+$lot_only_area =  get_post_meta( get_the_ID(), 'lot_only_area', true);
 $property_bedrooms =  get_post_meta( get_the_ID(), 'property_bedrooms', true);
 $property_bathrooms =  get_post_meta( get_the_ID(), 'property_bathrooms', true);
 $property_powder_room =  get_post_meta( get_the_ID(), 'property_powder_room', true);
