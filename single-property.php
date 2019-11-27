@@ -108,7 +108,7 @@ $property_fully_furnished = get_post_meta( get_the_ID(), 'property_fully_furnish
 									<?php } ?>
 
 									<?php if($property_fully_furnished == "Lot Only") { ?>
-									<div class="one">
+									<div class="one alone">
 										<span class="propertyNumber"><?php echo number_format($lot_only_area) ?></span>
 										<br>Sq Ft Lot Size
 									</div>

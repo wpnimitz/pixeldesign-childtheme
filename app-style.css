@@ -79,6 +79,10 @@
     grid-gap: 3px;
 }
 
+.alone.one {
+    border-bottom: 0px;
+}
+
 
 
 @media screen and (max-width: 1080px) {
