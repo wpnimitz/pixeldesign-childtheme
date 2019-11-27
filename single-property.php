@@ -88,17 +88,7 @@ $property_fully_furnished = get_post_meta( get_the_ID(), 'property_fully_furnish
 									<div class="one">
 										<span class="propertyNumber"><?php echo number_format($property_indoor_space) ?></span>
 										<br>Sq Ft Indoor Living Space
-									</div>
-									<?php } ?>
-
-									<?php if($property_fully_furnished == "Lot Only") { ?>
-									<div class="one">
-										<span class="propertyNumber"><?php echo number_format($lot_only_area) ?></span>
-										<br>Sq Ft Lot Size
-									</div>
-									<?php } ?>
-
-
+									</div>								
 									<div class="two">
 										<span class="propertyNumber"><?php echo $property_bedrooms ?></span>
 										<br>Bedroom<?php echo ($property_bedrooms > 1) ? 's' : '' ?>
@@ -115,6 +105,14 @@ $property_fully_furnished = get_post_meta( get_the_ID(), 'property_fully_furnish
 										<span class="propertyNumber"><?php echo $property_powder_room ?></span>
 										<br>Half Bath<?php echo ($property_powder_room > 1) ? 's' : '' ?>
 									</div>
+									<?php } ?>
+									
+									<?php if($property_fully_furnished == "Lot Only") { ?>
+									<div class="one">
+										<span class="propertyNumber"><?php echo number_format($lot_only_area) ?></span>
+										<br>Sq Ft Lot Size
+									</div>
+									<?php } ?>
 								</div>
 								<br>
 								<div style="margin-top: 1.5em;clear:left;'"><a class="amenityButton locButton" href="#unique_overlay_menu_id_13643" id="overlay_unique_id_13643">View Location</a></div>
