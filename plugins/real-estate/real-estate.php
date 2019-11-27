@@ -239,11 +239,12 @@ function cepl_meta_box_callback( $meta_id ) {
 	echo '<option value="No" '.if_selected_option("No",$property_fully_furnished).'>No</option>';
 	echo '<option value="Lot Only" '.if_selected_option("Lot Only",$property_fully_furnished).'>Lot Only</option>';
 	echo '</select>';
-	echo '</div>';
+	
 
 	echo '<h3>Lot Only Area</h3>';
 	$lot_only_area = get_post_meta( $meta_id->ID, 'lot_only_area', true );
 	echo '<input type="text" name="lot_only_area" placeholder="Enter indoor living space in Sq Ft." value="'.  $lot_only_area .'">';
+	echo '</div>';
 
 
 	echo '<h2 class="fullwidth additional-heading">Property Pricing</h2>';
