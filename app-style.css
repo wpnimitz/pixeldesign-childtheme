@@ -5,6 +5,10 @@
     padding-bottom: 5px;
 }
 
+.et_pb_svg_logo #logo {
+    max-height: 50px;
+}
+
 .hidemenu {
     display: none !important;
 }
@@ -12,6 +16,10 @@
 #et-secondary-nav .strong a {
     font-weight: 600;
     color: #000;
+}
+
+#et-top-navigation {
+    padding-left: 0 !important;
 }
 
 .notopbar #top-header {
