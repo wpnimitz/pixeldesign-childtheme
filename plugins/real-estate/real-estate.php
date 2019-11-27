@@ -243,7 +243,7 @@ function cepl_meta_box_callback( $meta_id ) {
 
 	echo '<h3>Lot Only Area</h3>';
 	$lot_only_area = get_post_meta( $meta_id->ID, 'lot_only_area', true );
-	echo '<input type="text" name="lot_only_area" placeholder="Enter indoor living space in Sq Ft." value="'.  $lot_only_area .'">';
+	echo '<input type="text" name="lot_only_area" placeholder="Enter lot area in Sq Ft." value="'.  $lot_only_area .'">';
 	echo '</div>';
 
 
