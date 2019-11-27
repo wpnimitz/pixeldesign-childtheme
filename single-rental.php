@@ -162,7 +162,7 @@ if($property_beds == "") {
 										<br>Bathroom<?php echo ($property_bathrooms > 1) ? 's' : '' ?>
 									</div>
 									<div class="meta  meta-last">
-										<span class="propertyNumber"><?php echo $property_powder_room ?></span>
+										<span class="propertyNumber"><?php echo ($property_powder_room>0) ? $property_powder_room : '&mdash;' ?></span>
 										<br>Half Bath<?php echo ($property_powder_room > 1) ? 's' : '' ?>
 									</div>
 									
