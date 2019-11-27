@@ -35,6 +35,7 @@ if( empty($property_description) ) {
 }
 
 $property_indoor_space =  get_post_meta( get_the_ID(), 'property_indoor_space', true);
+$property_indoor_space =  get_post_meta( get_the_ID(), 'lot_only_area', true);
 $property_bedrooms =  get_post_meta( get_the_ID(), 'property_bedrooms', true);
 $property_bathrooms =  get_post_meta( get_the_ID(), 'property_bathrooms', true);
 $property_powder_room =  get_post_meta( get_the_ID(), 'property_powder_room', true);
@@ -68,10 +69,10 @@ $property_fully_furnished = get_post_meta( get_the_ID(), 'property_fully_furnish
 									}
 
 									if($property_fully_furnished == "Fully Furnished") {
-										echo '<span class="priceDetail">Fully Furnished</span>';
+										echo ' <span class="priceDetail">Fully Furnished</span>';
 									}
 									if($property_fully_furnished == "Lot Only") {
-										echo '<span class="priceDetail">Lot Only</span>';
+										echo ' <span class="priceDetail">Lot Only</span>';
 									}
 
 									?>
@@ -82,10 +83,22 @@ $property_fully_furnished = get_post_meta( get_the_ID(), 'property_fully_furnish
 							</div>
 							<div class="et_pb_column et_pb_column_1_3">
 								<div class="wrapper">
+
+									<?php if($property_fully_furnished != "Lot Only") { ?>
 									<div class="one">
 										<span class="propertyNumber"><?php echo number_format($property_indoor_space) ?></span>
 										<br>Sq Ft Indoor Living Space
 									</div>
+									<?php } ?>
+
+									<?php if($property_fully_furnished == "Lot Only") { ?>
+									<div class="one">
+										<span class="propertyNumber"><?php echo number_format($lot_only_area) ?></span>
+										<br>Sq Ft Lot Size
+									</div>
+									<?php } ?>
+
+
 									<div class="two">
 										<span class="propertyNumber"><?php echo $property_bedrooms ?></span>
 										<br>Bedroom<?php echo ($property_bedrooms > 1) ? 's' : '' ?>
@@ -104,7 +117,7 @@ $property_fully_furnished = get_post_meta( get_the_ID(), 'property_fully_furnish
 									</div>
 								</div>
 								<br>
-								<div style="margin-top: 1.5em;clear:left;'"><a class="amenityButton locButton" href="#unique_overlay_menu_id_13643" id="overlay_unique_id_13643"	>View Location</a></div>
+								<div style="margin-top: 1.5em;clear:left;'"><a class="amenityButton locButton" href="#unique_overlay_menu_id_13643" id="overlay_unique_id_13643">View Location</a></div>
 							</div>
 						</div>
 
