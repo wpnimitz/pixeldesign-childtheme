@@ -419,11 +419,15 @@ function cepl_meta_box_save_meta( $post_id ) {
   if ( isset($_POST['property_text_features']) ) {        
     update_post_meta($post_id, 'property_text_features', $_POST['property_text_features']);      
   }
+  
   if ( isset($_POST['property_text_community']) ) {        
     update_post_meta($post_id, 'property_text_community', $_POST['property_text_community']);      
   }
   if ( isset($_POST['rental_coordinates']) ) {        
     update_post_meta($post_id, 'rental_coordinates', $_POST['rental_coordinates']);      
+  }
+  if ( isset($_POST['lot_only_area']) ) {        
+    update_post_meta($post_id, 'lot_only_area', $_POST['lot_only_area']);      
   }
 
 }
