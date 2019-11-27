@@ -26,8 +26,9 @@ h2.fullwidth.additional-heading {
 }
 
 .delmar-property-details h3 {
-	font-family: 14px;
-	font-weight: 500;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
 }
 
 .delmar-property-details .child-epl-options {
