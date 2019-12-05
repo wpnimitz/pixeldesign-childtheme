@@ -42,7 +42,9 @@ jQuery(document).ready(function( $ ) {
   		}
     });
     $(window).on('resize', function(){
-        renderMarker(".rental_mapper marker");
+        if( $(".rental_mapper marker").length ) {
+            renderMarker(".rental_mapper marker");
+        }
     });
 
     var maxPress = 0;   
