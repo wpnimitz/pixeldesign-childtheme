@@ -201,7 +201,7 @@ function easy_property_blurb_extra($post_id, $type = "property") {
 				$ret .= '</p>';
 				$ret .= '<p><a href="'. $prop_permalink .'" class="amenityButton">View More</a></p>' ;
 				$ret .= '</div>';
-			$ret .= 'asdf</div>';
+			$ret .= '</div>';
 		$ret .= '</div>';
 
 	$ret .= '</div>'; //extra-blurb
