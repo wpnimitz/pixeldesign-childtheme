@@ -228,7 +228,7 @@ function get_easy_property_list_ajax() {
 	}
 
 	
-	//both real estate properties and rental properties are using this cutom meta
+	//both real estate properties and rental properties are using this custom meta
 	if( isset($property_status) && $property_status != "" ) {
 		$bedrooms = $_REQUEST["bedrooms"];
 		$args['meta_query'][] = array(
