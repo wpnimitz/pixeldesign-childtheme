@@ -160,6 +160,7 @@ jQuery(document).ready(function( $ ) {
                 
                 $(".loadmore .loading").show();
                 allowtoLoad = true;
+                button = $('.properties_loadmore');
                 button.data("current-page", 1);
                 button.data("search-filter", true);
 
