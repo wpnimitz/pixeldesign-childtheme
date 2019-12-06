@@ -291,6 +291,14 @@ function get_easy_property_list_ajax() {
 		);
 	}
 
+	if($post_type == "property" && !empty($listingOptions)) {
+		$args['meta_query'][] = array(
+			'key' => 'property_status',
+			'value'   => $listingOptions,
+	        'compare' => '=',
+		);
+	}
+
 
 
 	$loop = new WP_Query( $args );
