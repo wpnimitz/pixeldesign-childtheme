@@ -389,6 +389,9 @@ select::-ms-expand {
     color: #fff;
     font-size: 16px;
     padding: 10px 15px 10px 5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
 }
 
 .status-sold:before {
