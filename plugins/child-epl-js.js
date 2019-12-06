@@ -1,6 +1,6 @@
 jQuery(document).ready(function( $ ) {
 
-    $mainSite = 'http://newdelmar.flywheelsites.com/';
+    $mainSite = 'https://hillbrandingtest.com/';
 
     $common = {
         actual : $mainSite,
@@ -53,7 +53,7 @@ jQuery(document).ready(function( $ ) {
 
         logo_img.attr("src", $common["assetSVG"] + sMenu + '.svg');
         logo_img.removeClass().addClass(sMenu)
-        logo_link.attr("href", $mainSite);
+        logo_link.attr("href", $common[sMenu]);
         $("#et-secondary-nav li." + sMenu).addClass("strong");
         $("#top-menu li." + sMenu).removeClass("hidemenu");  
     }
