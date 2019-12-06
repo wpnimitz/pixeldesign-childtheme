@@ -126,6 +126,7 @@ function easy_property_blurb_extra($post_id, $type = "property") {
 	$prop_powderrooms = get_post_meta( $post_id, 'property_powder_room', true);
 	$prop_garagestalls = get_post_meta( $post_id, 'property_garage_stalls', true);
 	$prop_permalink = get_the_permalink( $post_id);
+	$prop_status = get_post_meta( $post_id, 'property_status', true);
 	
 
 	$featured_image = get_the_post_thumbnail_url();
