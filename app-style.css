@@ -416,6 +416,10 @@ select::-ms-expand {
     display: none;
 }
 
+.status-sold + .property-description {
+    margin-top: 20px !important;
+}
+
 .blurb-extra.et_pb_blurb {
     font-size: 18px;
     color: rgba(0,0,0,0)!important;
