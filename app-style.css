@@ -406,6 +406,15 @@ select::-ms-expand {
     bottom: 0;
 }
 
+.single-property .status-sold {
+    position: relative;
+    display: inline-block;
+    padding: 10px 15px;
+}
+
+.single-property .status-sold:before {
+    display: none;
+}
 
 .blurb-extra.et_pb_blurb {
     font-size: 18px;
