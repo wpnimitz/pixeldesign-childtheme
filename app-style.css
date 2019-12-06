@@ -378,6 +378,17 @@ select::-ms-expand {
     width: calc(50% - 8px);
     margin: 4px;
     padding: 10px;
+    position: relative;
+}
+
+.status-sold {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: red;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 15px;
 }
 
 
