@@ -385,7 +385,7 @@ select::-ms-expand {
     position: absolute;
     bottom: 0;
     right: 0;
-    background: red;
+    background: #b53c1a;
     color: #fff;
     font-size: 16px;
     padding: 10px 15px 10px 5px;
@@ -398,7 +398,7 @@ select::-ms-expand {
     content: "";
     width: 0;
     height: 0;
-    border-bottom: 47px solid red;
+    border-bottom: 47px solid #b53c1a;
     border-left: 47px solid transparent;
     position: absolute;
     left: -47px;
