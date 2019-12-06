@@ -125,7 +125,6 @@ jQuery(document).ready(function( $ ) {
         e.preventDefault();
         allowtoLoad = false;
 
-
         postType = $("input[name=post_type]").val();
         if(postType == "property") {
             $action = 'get_easy_property_list_ajax';
@@ -300,8 +299,8 @@ jQuery(document).ready(function( $ ) {
                 outerHeight() - window.innerHeight) { 
 
                 if(allowtoLoad) {
-                    $('.properties_loadmore').trigger( "click" );
                     allowtoLoad = false;
+                    $('.properties_loadmore').trigger( "click" );
                 }
             } 
         });
