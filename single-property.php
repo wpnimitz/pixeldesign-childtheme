@@ -4,6 +4,7 @@ get_header();
 
 
 $slider_id = get_post_meta( get_the_ID(), 'property_assigned_slider', true);
+$prop_status = get_post_meta( get_the_ID(), 'property_status', true);
 
 
 $divi_option = get_option("et_divi");
@@ -77,6 +78,11 @@ $property_fully_furnished = get_post_meta( get_the_ID(), 'property_fully_furnish
 
 									?>
 								</h3>
+
+								<?php if($prop_status == "sold") {
+									echo '<div class="status-sold">Sold</div>';
+								} ?>
+								
 								<div class="property-description">
 									<?php echo $property_description; ?>
 								</div>
