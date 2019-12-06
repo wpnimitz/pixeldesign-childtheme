@@ -46,7 +46,7 @@ jQuery(document).ready(function( $ ) {
         } else if ( $('body').hasClass("development") ) {
             sMenu = "difference";
         } else {
-            console.log("no condition found main check");
+            //console.log("no condition found main check");
         }
         Cookies.set('sMenu', sMenu);
         //console.log("revealing menu: " + sMenu);
@@ -139,7 +139,7 @@ jQuery(document).ready(function( $ ) {
         $(".loadmore .loading").hide();
 
         
-        console.log(data);
+        //console.log(data);
 
         $.getJSON( get_property_search.ajaxurl, data, function( json ) {
             $(".message").html("").attr("class", '').addClass("message");
@@ -164,10 +164,10 @@ jQuery(document).ready(function( $ ) {
                 button.data("current-page", 1);
                 button.data("search-filter", true);
 
-                console.log(json_data);
+                //console.log(json_data);
 
             } else {
-                console.log(json.data);
+                //console.log(json.data);
                 allowtoLoad = false;
                 $(".loadmore .loading").hide();
                 $(".property-list").empty();
@@ -189,7 +189,7 @@ jQuery(document).ready(function( $ ) {
         });
 
         var currentMaxPrice = $(".maxPrice option[selected]").val();
-        console.log(currentMaxPrice)
+        //console.log(currentMaxPrice)
         if(minPrice < currentMaxPrice ) {
 
         } else {
@@ -250,7 +250,7 @@ jQuery(document).ready(function( $ ) {
             var data = $('.property-search-filters').serialize() + "&action=" + $action + "&paged=" + button.data("current-page");
         }
 
-        console.log(data);
+        //console.log(data);
 
         buttonParent.hide();
         $(".loadmore .loading").show();
@@ -282,7 +282,7 @@ jQuery(document).ready(function( $ ) {
                         allowtoLoad = false;
                     }
                 } else {
-                    console.log(json.data);
+                    //console.log(json.data);
                     $(".loadmore .loading").show().addClass("success");
                     $(".loadmore .message").html("All Results Displayed");
                     $(".loadmore img").hide();
