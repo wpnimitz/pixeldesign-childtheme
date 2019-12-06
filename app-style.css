@@ -382,13 +382,25 @@ select::-ms-expand {
 }
 
 .status-sold {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     right: 0;
     background: red;
     color: #fff;
     font-size: 16px;
-    padding: 10px 15px;
+    padding: 10px 15px 10px 5px;
+}
+
+.status-sold:before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-bottom: 47px solid red;
+    border-left: 47px solid transparent;
+    position: absolute;
+    left: -47px;
+    top: 0;
+    bottom: 0;
 }
 
 
