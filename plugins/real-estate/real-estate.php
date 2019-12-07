@@ -561,6 +561,7 @@ function get_easy_property_search_filters( $atts ){
 	$ret .= '<div class="et_pb_column et_pb_column_1_2">';
 	$ret .= '<label>Listing Status</label>';
 	$ret .= '<select name="listingOptions">';
+	$ret .= '<option value="">All</option>';
 	$ret .= '<option value="new">Available</option>';
 	$ret .= '<option value="sold">Sold</option>';
 	$ret .= '</select>';
