@@ -321,7 +321,7 @@ jQuery(document).ready(function( $ ) {
     // })
 
     $(window).load(function(){
-      $("#top-menu").css("display", "initial");
+      $("#top-menu").css("opacity", "1");
     });
 
 
