@@ -7,6 +7,7 @@
 
 .et_pb_svg_logo #logo {
     max-height: 50px;
+        height: 100% !important;
 }
 
 .hidemenu {
