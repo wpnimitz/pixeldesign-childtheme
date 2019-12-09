@@ -320,6 +320,10 @@ jQuery(document).ready(function( $ ) {
     //         2000);
     // })
 
+    $(window).load(function(){
+      $("#top-menu").show();
+    });
+
 
 
 });
