@@ -902,3 +902,11 @@ form.easy-property-search-filters select {
         border: 1px solid #fff;
     }
 }
+
+@media and screen (min-width: 981px) {
+    .property_grid {
+        position: absolute;
+        right: 0;
+        margin-right: 0 !important;
+    }
+}
