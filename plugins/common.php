@@ -175,7 +175,7 @@ function easy_property_blurb_extra($post_id, $type = "property") {
 
 				$ret .= '<p>';
 
-				$ret .= $property_indoor_space . ' ' . $prop_building_area_unit_text . '<br>';
+				$ret .= number_format($property_indoor_space) . ' ' . $prop_building_area_unit_text . '<br>';
 
 				if($prop_bedrooms > 1) {
 					$ret .= $prop_bedrooms . ' Bedrooms';
