@@ -101,39 +101,40 @@ if($property_beds == "") {
 									<?php echo $property_description ?>
 								</div>
 								
-							<!-- START: BOILERPLATE FEATURE LIST (THE DIV BELOW WAS ADDED BY DOUG) -->
+								<!-- START: BOILERPLATE FEATURE LIST (THE DIV BELOW WAS ADDED BY DOUG) -->
+							</div>
+							<div class="et_pb_column et_pb_column_2_3">
+	                            <div class="featureBoilerplate"> 
+									<h4>Amenities</h4>
+	                                <p>Our collection of two to eight bedroom beachfront and oceanview villas offer:</p>
+	                                <ul>
+	                                  <li>Oceanview master suites</li>
+	                                  <li>Well-appointed indoor and outdoor dining areas</li>
+	                                  <li>Private infinity-edged pools and spas</li>
+	                                  <li>Outdoor fireplaces, fire pits and kitchens</li>
+	                                  <li>Televisions with DVD players and high-speed Internet</li>
+	                                  <li>Personal golf cart</li>
+	                                </ul>
+	                                <p>In addition, guests enjoy:</p>
+	                                <ul>
+	                                  <li>Personal butler included</li>
+	                                  <li>Meticulous pre-arrival planning by concierge staff</li>
+	                                  <li>Dedicated House Manager</li>
+	                                  <li>Daily Housekeeping services</li>
+	                                  <li>Offsite activity coordination and in-residence spa services</li>
+	                                  <li>Available personal chef (cost additional)</li>
+	                                  <li>Exclusive Villas Del Mar and Espiritu Del Mar amenities, including the Club Ninety Six beach club and kids club, Club Espiritu fitness club and spa, private sailing catamaran, and access to Palmilla golf all just minutes away via golf cart ride.</li>
+	                                  <li>Restaurants, boutiques, beaches, golf and tennis are just a short walk or golf cart ride away from your villa</li>
+	                                  <li>24-hour gated security and emergency medical response</li>
+	                                </ul>
+	                            </div> 
 
-                            <div class="featureBoilerplate"> 
-								<h4>Amenities</h4>
-                                <p>Our collection of two to eight bedroom beachfront and oceanview villas offer:</p>
-                                <ul>
-                                  <li>Oceanview master suites</li>
-                                  <li>Well-appointed indoor and outdoor dining areas</li>
-                                  <li>Private infinity-edged pools and spas</li>
-                                  <li>Outdoor fireplaces, fire pits and kitchens</li>
-                                  <li>Televisions with DVD players and high-speed Internet</li>
-                                  <li>Personal golf cart</li>
-                                </ul>
-                                <p>In addition, guests enjoy:</p>
-                                <ul>
-                                  <li>Personal butler included</li>
-                                  <li>Meticulous pre-arrival planning by concierge staff</li>
-                                  <li>Dedicated House Manager</li>
-                                  <li>Daily Housekeeping services</li>
-                                  <li>Offsite activity coordination and in-residence spa services</li>
-                                  <li>Available personal chef (cost additional)</li>
-                                  <li>Exclusive Villas Del Mar and Espiritu Del Mar amenities, including the Club Ninety Six beach club and kids club, Club Espiritu fitness club and spa, private sailing catamaran, and access to Palmilla golf all just minutes away via golf cart ride.</li>
-                                  <li>Restaurants, boutiques, beaches, golf and tennis are just a short walk or golf cart ride away from your villa</li>
-                                  <li>24-hour gated security and emergency medical response</li>
-                                </ul>
-                            </div> 
-
-							<!-- END: BOILERPLATE FEATURE LIST -->
+								<!-- END: BOILERPLATE FEATURE LIST -->
 							
 							</div>
 							
 							<!-- Property Grid layout -->
-							<div class="et_pb_column et_pb_column_1_3">
+							<div class="et_pb_column et_pb_column_1_3 property_grid">
 								<div class="property-meta">
 									<div class="meta full">
 										<span class="propertyNumber"><?php echo number_format($property_indoor_space) ?></span>
