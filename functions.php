@@ -38,7 +38,7 @@ extract(shortcode_atts(array('id' =>'*'),$ds_mod_id));
 return do_shortcode('[et_pb_section global_module="'.$id.'"][/et_pb_section]');
 }
 
-// Defer parsing of JavaScript - Added by Doug (Nimitz, feel free to suggest a better approach)
+// Defer parsing of JavaScript 
 function defer_parsing_of_js( $url ) {
     if ( is_user_logged_in() ) return $url; //don't break WP Admin
     if ( FALSE === strpos( $url, '.js' ) ) return $url;

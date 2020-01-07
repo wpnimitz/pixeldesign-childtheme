@@ -329,7 +329,7 @@ function cepl_meta_box_callback( $meta_id ) {
 
 	echo '<div class="mapper-defaults" style="display:none;">';
 		echo '<img src="'. get_stylesheet_directory_uri() .'/assets/svg/MapPointer.svg" class="pin-marker">';
-		echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/delmar_map.jpg" class="map-canvass">';
+		echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/MasterPlanCommunityMap_ForWebsiteV2-1.jpg" class="map-canvass">';
 	echo '</div>';
 
 	$rental_coordinates = get_post_meta( $meta_id->ID, 'rental_coordinates', true );
@@ -339,7 +339,7 @@ function cepl_meta_box_callback( $meta_id ) {
 	}
 	echo '<div class="rental_mapper">';
 
-		echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/delmar_map.jpg" width="800" class="pin" easypin-id="rental_map">';
+		echo '<img src="'. get_stylesheet_directory_uri() .'/assets/img/MasterPlanCommunityMap_ForWebsiteV2-1.jpg" width="800" class="pin" easypin-id="rental_map">';
 		echo '<marker style="position: absolute; top: 30px; left: 30px; width: 30px;" class="drag"><img data-coor="'. $rental_coordinates. '" src="'. get_stylesheet_directory_uri() .'/assets/svg/MapPointer.svg" class="map-canvass"></marker>';
 
 		
