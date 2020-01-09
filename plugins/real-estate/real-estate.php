@@ -347,7 +347,7 @@ function cepl_meta_box_callback( $meta_id ) {
 
 
 	
-	echo '<input type="text" name="rental_coordinates" value="'. $rental_coordinates. '" data-value="'. $rental_coordinates. '" class="rental_coordinates" required>';
+	echo '<input type="text" name="rental_coordinates" value="'. $rental_coordinates. '" data-value="'. $rental_coordinates. '" class="rental_coordinates">';
 
 	echo '<div id="rental_coordinates"></div>';
 
