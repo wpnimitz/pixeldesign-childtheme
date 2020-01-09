@@ -4,8 +4,11 @@ get_header();
 
 
 $slider_id = get_post_meta( get_the_ID(), 'property_assigned_slider', true);
-$allow_view_location = true;
-$allow_view_calendar = false;
+$rental_coordinates = get_post_meta( get_the_ID(), 'rental_coordinates', true );
+$allow_view_location = false;
+if(!empty($rental_coordinates)) {
+	$allow_view_location = true;
+}
 
 
 

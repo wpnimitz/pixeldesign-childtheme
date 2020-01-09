@@ -5,6 +5,11 @@ get_header();
 
 $slider_id = get_post_meta( get_the_ID(), 'property_assigned_slider', true);
 $prop_status = get_post_meta( get_the_ID(), 'property_status', true);
+$rental_coordinates = get_post_meta( get_the_ID(), 'rental_coordinates', true );
+$allow_view_location = false;
+if(!empty($rental_coordinates)) {
+	$allow_view_location = true;
+}
 
 
 $divi_option = get_option("et_divi");
@@ -121,7 +126,9 @@ $property_fully_furnished = get_post_meta( get_the_ID(), 'property_fully_furnish
 									<?php } ?>
 								</div>
 								<br>
+								<?php if($allow_view_location) {?>
 								<div style="margin-top: 1.5em;clear:left;'"><a class="amenityButton locButton" href="#unique_overlay_menu_id_13643" id="overlay_unique_id_13643">View Location</a></div>
+								<?php } ?>
 							</div>
 						</div>
 
