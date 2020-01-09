@@ -197,7 +197,9 @@ function easy_property_blurb_extra($post_id, $type = "property") {
 					if($prop_garagestalls > 1) {
 						$ret .= '<br>' . $prop_garagestalls . ' Garage Stalls';
 					} else {
-						$ret .= '<br>' . $prop_garagestalls . ' Garage Stall';
+						if($prop_garagestalls != "") {
+							$ret .= '<br>' . $prop_garagestalls . ' Garage Stall';
+						}
 					}
 				}
 				
