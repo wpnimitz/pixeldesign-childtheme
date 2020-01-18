@@ -33,10 +33,37 @@ function real_estate_custom_post_type() {
 		'can_export'          => false,
 		'exclude_from_search' => true,
 		'publicly_queryable'  => true,
-		'capability_type'     => 'page'
+		'capability_type'     => 'page',
+		'capabilities' => array(
+	        'edit_post' => 'edit_reproperty',
+	        'edit_posts' => 'edit_reproperties',
+	        'edit_others_posts' => 'edit_reproperty_post',
+	        'edit_published_posts' => 'edit_reproperty_published_posts',
+	        'publish_posts' => 'publish_reproperties',
+	        'read_post' => 'read_reproperty',
+	        'read_private_posts' => 'read_private_reproperties',
+	        'delete_post' => 'delete_reproperty'
+	    ),
+	    // as pointed out by iEmanuele, adding map_meta_cap will map the meta correctly 
+	    'map_meta_cap' => true
 	);
 	register_post_type( 'property', $args );
 }
+
+function add_reproperty_theme_caps() {
+    // gets the administrator role
+    $admins = get_role( 'administrator' );
+
+    $admins->add_cap( 'edit_reproperty' ); 
+    $admins->add_cap( 'edit_reproperties' ); 
+    $admins->add_cap( 'edit_reproperty_post' ); 
+    $admins->add_cap( 'edit_reproperty_published_posts' ); 
+    $admins->add_cap( 'publish_reproperties' ); 
+    $admins->add_cap( 'read_reproperty' ); 
+    $admins->add_cap( 'read_private_reproperties' ); 
+    $admins->add_cap( 'delete_reproperty' ); 
+}
+add_action( 'admin_init', 'add_reproperty_theme_caps');
 
 // Add the custom columns to the book post type:
 add_filter( 'manage_property_posts_columns', 'set_custom_columns_properties' );

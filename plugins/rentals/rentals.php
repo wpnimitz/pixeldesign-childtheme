@@ -35,10 +35,37 @@ function rental_custom_post_type() {
 		'can_export'          => false,
 		'exclude_from_search' => true,
 		'publicly_queryable'  => true,
-		'capability_type'     => 'page'
+		'capability_type'     => 'page',
+		'capabilities' => array(
+	        'edit_post' => 'edit_rental',
+	        'edit_posts' => 'edit_rentals',
+	        'edit_others_posts' => 'edit_rental_post',
+	        'edit_published_posts' => 'edit_rental_published_posts',
+	        'publish_posts' => 'publish_rentals',
+	        'read_post' => 'read_rental',
+	        'read_private_posts' => 'read_private_rentals',
+	        'delete_post' => 'delete_rental'
+	    ),
+	    // as pointed out by iEmanuele, adding map_meta_cap will map the meta correctly 
+	    'map_meta_cap' => true
 	);
 	register_post_type( 'rental', $args );
 }
+
+function add_rental_theme_caps() {
+    // gets the administrator role
+    $admins = get_role( 'administrator' );
+
+    $admins->add_cap( 'edit_rental' ); 
+    $admins->add_cap( 'edit_rentals' ); 
+    $admins->add_cap( 'edit_rental_post' ); 
+    $admins->add_cap( 'edit_rental_published_posts' ); 
+    $admins->add_cap( 'publish_rentals' ); 
+    $admins->add_cap( 'read_rental' ); 
+    $admins->add_cap( 'read_private_rentals' ); 
+    $admins->add_cap( 'delete_rental' ); 
+}
+add_action( 'admin_init', 'add_rental_theme_caps');
 
 // Add the custom columns to the book post type:
 add_filter( 'manage_rental_posts_columns', 'set_custom_rental_blocked_days' );
@@ -54,7 +81,7 @@ function set_custom_rental_blocked_days($columns) {
 add_action( 'manage_rental_posts_custom_column' , 'custom_blocked_days', 10, 2 );
 function custom_blocked_days( $column, $post_id ) {
     switch ( $column ) {
-        case 'blocked_days' :
+        case 'blocked_days_x' :
             $unavailable_rental_days = get_post_meta( $post_id, 'unavailable_rental_days', true );
         	$blocked_days = explode(",", $unavailable_rental_days);
 
@@ -841,48 +868,28 @@ function rental_metabox_callback( $meta_id ) {
 
 
 
+	// echo '<div class="unavailable-adder">';
+	// echo '<h2 class="fullwidth additional-heading">Block Unavailable / Booked / Holiday Days</h2>';
+	// $unavailable_rental_days = get_post_meta( $meta_id->ID, 'unavailable_rental_days', true );
+	// echo '<input type="hidden" name="unavailable_rental_days" value="'.$unavailable_rental_days.'" data-blocked="'.$unavailable_rental_days.'">';
+	// //echo '<input type="hidden" name="unavailable_rental_days" value="">';
 
+	// echo '<h3>Blocked Days</h3>';
+	// echo '<div class="display-unavailable">';
 
+	// $blockedDays = getBlockedDay(get_the_ID());
 
+	// foreach ($blockedDays as $blockedDay => $value) {
+	// 	echo '<span>'.date("m/d/Y", strtotime($value->blocked_date)).'</span>';
+	// }
 
+	// print_r($ids);
+	// count($ids);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	echo '<div class="unavailable-adder">';
-	echo '<h2 class="fullwidth additional-heading">Block Unavailable / Booked / Holiday Days</h2>';
-	$unavailable_rental_days = get_post_meta( $meta_id->ID, 'unavailable_rental_days', true );
-	echo '<input type="hidden" name="unavailable_rental_days" value="'.$unavailable_rental_days.'" data-blocked="'.$unavailable_rental_days.'">';
-	//echo '<input type="hidden" name="unavailable_rental_days" value="">';
-
-	echo '<h3>Blocked Days</h3>';
-	echo '<div class="display-unavailable">';
-
-	$blockedDays = getBlockedDay(get_the_ID());
-
-	foreach ($blockedDays as $blockedDay => $value) {
-		echo '<span>'.date("m/d/Y", strtotime($value->blocked_date)).'</span>';
-	}
-
-	print_r($ids);
-	count($ids);
-
-	echo '</div>';
-	// echo '<h3>Select the date from the calendar below. Format: MM/DD/YYYY</h3><br />';
-	// echo '<div class="form-group"><input type="text" name="unavailable_adder" value=""></div>';
-	echo '</div>'; //display-unavailable
+	// echo '</div>';
+	// // echo '<h3>Select the date from the calendar below. Format: MM/DD/YYYY</h3><br />';
+	// // echo '<div class="form-group"><input type="text" name="unavailable_adder" value=""></div>';
+	// echo '</div>'; //display-unavailable
 
 
 

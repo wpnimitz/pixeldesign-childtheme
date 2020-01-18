@@ -172,7 +172,12 @@ function easy_property_blurb_extra($post_id, $type = "property") {
 
 				$ret .= '<p>';
 
-				$ret .= number_format($property_indoor_space) . ' ' . $prop_building_area_unit_text . '<br>';
+				if(is_float($property_indoor_space)) {
+					$ret .= number_format($property_indoor_space,0) . ' ' . $prop_building_area_unit_text . '<br>';
+				} else {
+					$ret .= $property_indoor_space . ' ' . $prop_building_area_unit_text . '<br>';
+				}
+				
 
 				if($prop_bedrooms > 1) {
 					$ret .= $prop_bedrooms . ' Bedrooms';

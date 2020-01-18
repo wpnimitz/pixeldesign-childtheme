@@ -6,9 +6,9 @@ get_header();
 $slider_id = get_post_meta( get_the_ID(), 'property_assigned_slider', true);
 $prop_status = get_post_meta( get_the_ID(), 'property_status', true);
 $rental_coordinates = get_post_meta( get_the_ID(), 'rental_coordinates', true );
-$rental_coordinates_count = explode(",", $rental_coordinates)
+$rental_coordinates_count = explode(",", $rental_coordinates);
 $allow_view_location = false;
-if(!empty($rental_coordinates) OR count($rental_coordinates) > 3) {
+if(count($rental_coordinates_count) >= 3) {
 	$allow_view_location = true;
 }
 
