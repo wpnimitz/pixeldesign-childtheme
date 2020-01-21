@@ -71,7 +71,7 @@ $property_fully_furnished = get_post_meta( get_the_ID(), 'property_fully_furnish
 
 									if($property_price > 0) {
 										if( strpos($property_price, ',') !== false ) {
-										    echo $property_price;
+										    echo '$'. $property_price;
 										} else {
 											echo '$'. number_format($property_price);	
 										}
