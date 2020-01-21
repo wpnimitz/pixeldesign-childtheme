@@ -70,11 +70,14 @@ $property_fully_furnished = get_post_meta( get_the_ID(), 'property_fully_furnish
 									<?php 
 
 									if($property_price > 0) {
-										echo '$'. number_format($property_price);
+										if( strpos($property_price, ',') !== false ) {
+										    echo $property_price;
+										} else {
+											echo '$'. number_format($property_price);	
+										}
 									} else {
 										echo 'Price Available Upon Request';
 									}
-
 									if($property_fully_furnished == "Fully Furnished") {
 										echo ' <span class="priceDetail">Fully Furnished</span>';
 									}
