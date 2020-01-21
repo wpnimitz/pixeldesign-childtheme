@@ -18,7 +18,7 @@ function delmar_admin_assets() {
    $version = strtotime("now");
     wp_enqueue_style( 'delmar-admin-style', get_stylesheet_directory_uri() . '/plugins/delmar-admin-style.css?x=2', array(), $version );
     wp_enqueue_script( 'delmar-admin-script', get_stylesheet_directory_uri() . '/plugins/delmar-admin-script.js', array(), $version );
-    //wp_enqueue_script( 'jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', array(), $version, true );
+    wp_enqueue_script( 'jquery-ui', get_stylesheet_directory_uri() . '/assets/js/jquery-ui.js', array(), $version, true );
     wp_enqueue_script( 'easy-pin', get_stylesheet_directory_uri() . '/assets/js/easypin.js', array(), $version, true );
 }
 add_action( 'admin_enqueue_scripts', 'delmar_admin_assets' );
