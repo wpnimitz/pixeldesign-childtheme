@@ -238,7 +238,7 @@ function rental_filtered_data( $atts ){
 	$ret .= '</div>';
 
 	$ret .= '<div class="et_pb_column et_pb_column_1_2">';
-	$ret .= '<label>Bedrooms</label>';
+	$ret .= '<label>Bedrooms (minimum)</label>';
 	$ret .= '<select name="bedrooms">';
 	$ret .= '<option value="0">All</option>';
 	for ($i=2; $i < 11; $i++) { 
